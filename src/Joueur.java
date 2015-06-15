@@ -2,12 +2,12 @@ import java.lang.system;
 
 public class Joueur {
 
-	private String pseudo;
-	private int armeesDispo;
-	private Color couleur;
-	private List<Carte> main;
-	private List<Continent> continent;
-	private List<Pays> pays;
+	protected String pseudo;
+	protected int armeesDispo;
+	protected Color couleur;
+	protected List<Carte> main;
+	protected List<Continent> continent;
+	protected List<Pays> pays;
 	
 	public void distribuer(Pays p,int nbPions){
 		if(this.armeesDispo>nbPions){
@@ -25,7 +25,23 @@ public class Joueur {
 		else if((c1.type==Soldat && c2.type==Cavalier && c3.type==Canon) ||
 				(c1.type==Cavalier && c2.type==Soldat && c3.type==Canon) ||
 				(c1.type==Canon && c2.type==Cavalier && c3.type==Soldat) ||
-				(c1.type==Soldat && c2.type==Canon && c3.type==Cavalier) ||))
+				(c1.type==Soldat && c2.type==Canon && c3.type==Cavalier) ||
+				(c1.type==Cavalier && c2.type==Canon && c3.type==Soldat) ||
+				(c1.type==Canon && c2.type==Soldat && c3.type==Cavalier))res=10;
+		return res;
 	}
+	
+	public int getArmeesDispo(){
+		return this.armeesDispo;
+	}
+	
+	public void ajouterArmeesDispo(int nb){
+		this.armeesDispo+=nb;
+	}
+	
+	public void enleverArmeesDispo(int nb){
+		this.armeesDispo-=nb;
+	}
+	
 
 }
