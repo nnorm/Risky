@@ -1,4 +1,3 @@
-import java.lang.System;
 import java.util.*;
 
 public class Joueur {

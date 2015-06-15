@@ -8,11 +8,37 @@ public class Pays {
 	
 	public void ajouterPions(int nbPions)
 	{
-		if(nbPions < this.owner.getArmeesDispo())
-			throw new RuntimeException("requête impossible");
-		
 		this.nbArmees += nbPions;
-		this.owner.enleverArmeesDispo(nbPions);
 	}
 	
+	public void enleverPions(int nbPions)
+	{
+		this.nbArmees -= nbPions;
+	}
+	
+	public boolean isVoisin(Pays p)
+	{
+		boolean res = false;
+		for(int i = 0; i < this.frontaliers.length && !res; i++)
+		{
+			res = p == frontaliers[i];
+		}
+		return res;
+	}
+	
+	public void deplacerPions(Pays p, int nbPions)
+	{
+		if(!this.isVoisin(p)) throw new RuntimeException("requête impossible");
+		
+	}
+	
+	public Joueur getOwner()
+	{
+		return this.owner;
+	}
+	
+	public int nbArmees()
+	{
+		return this.nbArmees;
+	}
 }
