@@ -7,8 +7,8 @@ public class Continent {
 	
 	public Continent(String nom, int bonus)
 	{
-		this.nom = nom;
-		this.bonusPion = bonus;
+		this.setNom(nom);
+		this.setBonusPion(bonus);
 		this.pays = new ArrayList<Pays>();
 	}
 	
@@ -19,5 +19,21 @@ public class Continent {
 				throw new IllegalArgumentException("Ce pays est déjà dans le continent !");
 		
 		this.pays.add(p);
+	}
+
+	public int getBonusPion() {
+		return bonusPion;
+	}
+
+	public void setBonusPion(int bonusPion) {
+		this.bonusPion = bonusPion;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 }
