@@ -22,9 +22,24 @@ public class Combat {
 		}
 		int[] combat1=new int[2];
 		int[] combat2=new int[2];
-		if(desAt1>desAt2 && desAt1>desAt3)combat1[1]=desAt1;
-		if(desAt2>desAt1 && desAt2>desAt3)combat1[1]=desAt2;
-		if(desAt3>desAt1 && desAt3>desAt2)combat1[1]=desAt3;
-		
+		if(desAt1>desAt2 && desAt1>desAt3)combat1[0]=desAt1;
+		if(desAt2>desAt1 && desAt2>desAt3)combat1[0]=desAt2;
+		if(desAt3>desAt1 && desAt3>desAt2)combat1[0]=desAt3;
+		if(desDef1>=desDef2)combat1[1]=desDef1;
+		if(desDef2>=desDef1)combat1[1]=desDef2;
+		if(combat1[0]==desAt1){
+			if(desAt2>=desAt3)combat2[0]=desAt2;
+			if(desAt3>=desAt2)combat2[0]=desAt3;
+		}
+		if(combat1[0]==desAt2){
+			if(desAt1>=desAt3)combat2[0]=desAt1;
+			if(desAt3>=desAt1)combat2[0]=desAt3;
+		}
+		if(combat1[0]==desAt3){
+			if(desAt2>=desAt1)combat2[0]=desAt2;
+			if(desAt1>=desAt2)combat2[0]=desAt1;
+		}
+		if(combat1[1]==desDef1)combat2[1]=desDef2;
+		else combat2[1]=desDef1;
 	}
 }
