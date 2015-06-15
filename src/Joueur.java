@@ -6,7 +6,7 @@ public class Joueur {
 	protected int armeesDispo;
 	//protected Color couleur;
 	protected LinkedList<Carte> main;
-	//protected LinkedList<Continent> continent;
+	protected LinkedList<Continent> continent;
 	protected LinkedList<Pays> pays;
 	
 	public void distribuer(Pays p,int nbPions){
@@ -43,5 +43,22 @@ public class Joueur {
 		this.armeesDispo-=nb;
 	}
 	
+	/**
+	 * Enlève un pays de la liste des pays de ce joueur
+	 * @param p le pays perdu
+	 */
+	public void perdrePays(Pays p)
+	{
+		this.pays.remove(p);
+	}
+	
+	/**
+	 * Rajoute unpays à la liste des pays de ce joueur
+	 * @param p le pays acquis
+	 */
+	public void acquerirPays(Pays p)
+	{
+		this.pays.add(p);
+	}
 
 }

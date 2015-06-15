@@ -2,7 +2,7 @@
 public class Pays {
 	private String nom;
 	private int nbArmees;
-	//private Continent continent;
+	private Continent continent;
 	private Joueur owner;
 	private Pays[] frontaliers;
 	
@@ -59,6 +59,13 @@ public class Pays {
 	public Joueur getOwner()
 	{
 		return this.owner;
+	}
+	
+	public void setOwner(Joueur j)
+	{
+		this.owner.perdrePays(this);
+		j.acquerirPays(this);
+		this.owner = j;
 	}
 	
 	/**
