@@ -6,13 +6,23 @@ public class Pays {
 	private Joueur owner;
 	private Pays[] frontaliers;
 	
+	/**
+	 * 
+	 * @param nbPions nombre de pions à ajouter au pays
+	 */
 	public void ajouterPions(int nbPions)
 	{
 		this.nbArmees += nbPions;
 	}
 	
-	public void enleverPions(int nbPions)
+	/**
+	 * 
+	 * @param nbPions nombre de pions à enlever au pays
+	 */
+	public void enleverPions(int nbPions) throws RuntimeException
 	{
+		if(nbPions >= this.nbArmees)
+		throw new RuntimeException("requête impossible");
 		this.nbArmees -= nbPions;
 	}
 	
@@ -26,7 +36,7 @@ public class Pays {
 		return res;
 	}
 	
-	public void deplacerPions(Pays p, int nbPions)
+	public void deplacerPions(Pays p, int nbPions) throws RuntimeException
 	{
 		if(!this.isVoisin(p)) throw new RuntimeException("requête impossible");
 		
@@ -37,7 +47,7 @@ public class Pays {
 		return this.owner;
 	}
 	
-	public int nbArmees()
+	public int getNbArmees()
 	{
 		return this.nbArmees;
 	}
