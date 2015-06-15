@@ -12,8 +12,12 @@ public class Continent {
 		this.pays = new ArrayList<Pays>();
 	}
 	
-	public void addPays(Pays p)
+	public void addPays(Pays p) throws IllegalArgumentException
 	{
+		for(Pays ps : this.pays)
+			if(ps == p)
+				throw new IllegalArgumentException("Ce pays est déjà dans le continent !");
+		
 		this.pays.add(p);
 	}
 }
