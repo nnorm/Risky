@@ -14,7 +14,7 @@ public class Database {
 			Connection vCon = DriverManager.getConnection("jdbc:oracle:thin:@bd11:1521:bd11", "infs2_prj06","azerty01");
 			Statement vSt = vCon.createStatement();
 			ResultSet vRs = vSt.executeQuery("SELECT id_joueur, pseudo, couleur FROM JOUEUR");
-			while(vRs.next();)
+			while(vRs.next())
 			{
 				String id = vRs.getString(1);
 				String pseudo = vRs.getString(2);
