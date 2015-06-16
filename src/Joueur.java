@@ -1,5 +1,6 @@
 import java.util.*;
 import java.awt.*;
+
 /**
  * Classe abstraite traduisant le concept abstrait de joueur. 
  * */
