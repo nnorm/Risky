@@ -61,6 +61,10 @@ public class Pays {
 		return this.owner;
 	}
 	
+	/**
+	 * Change le propriétaire du pays
+	 * @param j le nouveau propriétaire
+	 */
 	public void setOwner(Joueur j)
 	{
 		this.owner.perdrePays(this);

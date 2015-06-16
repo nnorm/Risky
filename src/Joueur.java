@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Joueur {
+public abstract class Joueur {
 
 	protected String pseudo;
 	protected int armeesDispo;
@@ -16,6 +16,10 @@ public class Joueur {
 		}
 	}
 	
+	/**
+	 * Indique le nombre d'armées données par une combinaison de carte en paramètre
+	 * @return le nombre d'armées
+	 */
 	public int combinaison(Carte c1,Carte c2,Carte c3)
 	{
 		int res=0;
