@@ -41,4 +41,5 @@ public class Combat {
 		{
 			lancersDef[i] = rnd.nextInt(6) +1;
 		}
+	}
 }

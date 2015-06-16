@@ -1,13 +1,9 @@
 import java.util.*;
 
-<<<<<<< HEAD
-public class Joueur {
-=======
 /**
  * Classe abstraite traduisant le concept abstrait de joueur. 
  * */
 public abstract class Joueur {
->>>>>>> a4d870f737775ba460ecfc31d9276a9d11bf784e
 
 	protected String pseudo;
 	protected int armeesDispo;
