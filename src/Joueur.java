@@ -24,10 +24,6 @@ public abstract class Joueur {
 		}
 	}
 	
-	/**
-	 * Indique le nombre d'armées données par une combinaison de carte en paramètre
-	 * @return le nombre d'armées
-	 */
 	public int combinaison(Carte c1,Carte c2,Carte c3)
 	{
 		int res=0;
@@ -84,5 +80,4 @@ public abstract class Joueur {
 	{
 		this.pays.add(p);
 	}
-
 }
