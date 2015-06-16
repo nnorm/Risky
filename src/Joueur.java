@@ -1,9 +1,6 @@
 import java.util.*;
-<<<<<<< HEAD
-
-=======
 import java.awt.*;
->>>>>>> 3876c2fe0d6d2d825155df2594134eb6c0c58621
+
 /**
  * Classe abstraite traduisant le concept abstrait de joueur. 
  * */
