@@ -5,8 +5,8 @@ import java.util.*;
 public class Combat {
 	private int nbDesAttaque;
 	private int nbDesDefense;
-	private Pays PaysAtt;
-	private Pays PaysDef;
+	private Pays paysAtt;
+	private Pays paysDef;
 	/**
 	 * Constructeur avec arguments.
 	 * @param attaquant le pays attaquant. (Pays)
@@ -32,7 +32,7 @@ public class Combat {
      {
              for (int i=0 ;i<=(t.length-2);i++)
                      for (int j=(t.length-1);i < j;j--)
-                             if (t[j] < t[j-1])
+                             if (t[j] > t[j-1])
                              {
                                      int x=t[j-1];
                                      t[j-1]=t[j];
@@ -47,7 +47,7 @@ public class Combat {
 	{
 		Random rnd = new Random();
 		
-		int resultatNbDef=this.nbDesDefense;//troupe qui reste sur territoire
+		int resultatNbDef=this.paysDef.getNbArmees();//troupe qui reste sur territoire
 		int resultatNbAtt=this.nbDesAttaque;//troupe encore en vie apres combat
 		int[] tabAt =new int[this.nbDesAttaque];
 		int[] tabDef =new int[this.nbDesDefense];
@@ -72,12 +72,12 @@ public class Combat {
 		}
 		
 		if(resultatNbDef==0){
-			this.PaysDef.setOwner(this.PaysAtt.getOwner());
-			this.PaysDef.ajouterPions(resultatNbAtt);
+			this.paysDef.setOwner(this.paysAtt.getOwner());
+			this.paysDef.ajouterPions(resultatNbAtt);
 		}
 		else {
-			this.PaysAtt.ajouterPions(resultatNbAtt);
-			this.PaysDef.enleverPions(this.PaysDef.getNbArmees()-resultatNbDef);
+			this.paysAtt.ajouterPions(resultatNbAtt);
+			this.paysDef.enleverPions(this.paysDef.getNbArmees()-resultatNbDef);
 	
 		}
 	}
