@@ -93,4 +93,32 @@ public class Database {
 			System.out.print(e);
 		}
 	}
+	
+	public void requeteDelete(){
+		String tab = "";
+		String conca = "";
+
+		for(int i = 0; i<= this.table.length-2; i++){
+			tab += this.table[i] + ", "; 
+		}
+		tab += this.table[this.table.length-1];
+		try { 
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Where is your Oracle JDBC Driver?");
+			e.printStackTrace();
+		}
+		
+		try{
+			Connection vCon = DriverManager.getConnection("jdbc:oracle:thin:@bd11:1521:bd11", "infs2_prj06","azerty01");
+			Statement vSt = vCon.createStatement();
+			conca = "DELETE FROM " + tab + " WHERE " + this.condition;
+			System.out.println(conca);
+			vSt.executeUpdate(conca);
+			System.out.println("Delete reussi");
+		}
+		catch(Exception e){
+			System.out.print(e);
+		}
+	}
 }
