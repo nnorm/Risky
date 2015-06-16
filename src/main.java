@@ -5,8 +5,7 @@ import java.sql.SQLException;
 public class main {
  
 	public static void main(String[] argv) {
- 
-		Database bd = new Database();
-		bd.sql();
+
+		
 	}
 }

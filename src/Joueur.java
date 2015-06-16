@@ -1,6 +1,13 @@
 import java.util.*;
 
+<<<<<<< HEAD
 public class Joueur {
+=======
+/**
+ * Classe abstraite traduisant le concept abstrait de joueur. 
+ * */
+public abstract class Joueur {
+>>>>>>> a4d870f737775ba460ecfc31d9276a9d11bf784e
 
 	protected String pseudo;
 	protected int armeesDispo;
@@ -9,6 +16,11 @@ public class Joueur {
 	protected LinkedList<Continent> continent;
 	protected LinkedList<Pays> pays;
 	
+	/**
+	 * Permet de distribuer les pions entre les pays du joueur.
+	 * @param p le pays dans lequel il faut ajouter des pions. (Pays)
+	 * @param nbPions le nombre de pions à donner au pays désigné. (int)
+	 * */
 	public void distribuer(Pays p,int nbPions){
 		if(this.armeesDispo>nbPions){
 		p.ajouterPions(nbPions);
@@ -31,14 +43,26 @@ public class Joueur {
 		return res;
 	}
 	
+	/**
+	 * Méthode d'instance de type getter permettant de récupérer le nombre d'armées d'un joueur.
+	 * @return le nombre d'armées auquelles le joueur a accès. (int) 
+	 * */
 	public int getArmeesDispo(){
 		return this.armeesDispo;
 	}
 	
+	/**
+	 * Ajoute un nombre d'armées indiqué.
+	 * @param nb le nombre d'armées à ajouter au joueur. (int) 
+	 * */	
 	public void ajouterArmeesDispo(int nb){
 		this.armeesDispo+=nb;
 	}
 	
+	/**
+	 * Soustrait un nombre d'armées indiqué.
+	 * @param nb le nombre d'armées à retirer au joueur. (int) 
+	 * */
 	public void enleverArmeesDispo(int nb){
 		this.armeesDispo-=nb;
 	}

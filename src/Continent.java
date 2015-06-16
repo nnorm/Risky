@@ -1,7 +1,6 @@
 import java.util.*;
-
 /**
- * Classe Continent
+ * Classe décrivant le concept de Continent.
  * */
 public class Continent {
 	private ArrayList<Pays> pays;
