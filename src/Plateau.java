@@ -14,13 +14,13 @@ public class Plateau {
 		
 		for( int i=0; i<42; i++){ // créer les 42 carte
 			if(i>14){
-				this.carte.add(new Carte(Soldat));
+				this.carte.add(new Carte(TypeCarte.Soldat));
 			}
 			if(i<=14 && i<28){
-				this.carte.add(new Carte(Cavalier));
+				this.carte.add(new Carte(TypeCarte.Cavalier));
 			}
 			if(i>=28){
-				this.carte.add(new Carte(Canon));
+				this.carte.add(new Carte(TypeCarte.Canon));
 			}
 		}
 	}
@@ -29,5 +29,18 @@ public class Plateau {
 		Collections.shuffle(carte);
 	}
 	
-	//public void 
+	public Carte piocherCarte() {
+		Carte c = this.carte.get(0);
+// permet d'avoir toujours une carte en indice 0
+		for(int i =0;i<this.carte.size();i=i+2){ 
+			this.carte.add(i,this.carte.get(i+1));
+		}
+		return c;
+	}
+
+	public void mettreDsPaquet(Carte c){
+		this.carte.add(c);
+		this.shuffleCarts();
+	}
+	
 }
