@@ -1,6 +1,5 @@
 import java.util.*;
 
-public class Joueur {
 /**
  * Classe abstraite traduisant le concept abstrait de joueur. 
  * */
@@ -81,5 +80,4 @@ public abstract class Joueur {
 	{
 		this.pays.add(p);
 	}
-
 }
