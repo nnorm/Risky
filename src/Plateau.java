@@ -1,5 +1,7 @@
 import java.util.*;
-
+/** 
+ * Classe permettan l'utilisation du concept de plateau de jeu.
+ * */
 public class Plateau {
 	
 	private int longueur;
@@ -26,16 +28,27 @@ public class Plateau {
 			}
 		}
 	}
-
+	
+	/**
+	 * Méthode d'instance permettant de mélanger toutes les cartes de la pioche. 
+	 * */
 	public void shuffleCards(){
 		Collections.shuffle(carte);
 	}
 	
+	/**
+	 * Méthode d'instance retournant une carte piochée et la retire du tas.
+	 * @return la carte piochée. (Carte) 
+	 * */
 	public Carte piocherCarte() {
 		Carte c =this.carte.removeFirst();
 		return c;
 	}
-
+	
+	/**
+	 * Méthode d'instance qui permet d'ajouter une carte au paquet et le mélange juste après.
+	 * @param c la carte à ajouter. (Carte) 
+	 * */
 	public void mettreDsPaquet(Carte c){
 		this.carte.add(c);
 		this.shuffleCards();

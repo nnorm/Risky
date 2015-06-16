@@ -1,4 +1,6 @@
-
+/** 
+ * Classe permettant d'utiliser le concept de pays dans le context du jeu.
+ * */
 public class Pays {
 	private String nom;
 	private int nbArmees;
