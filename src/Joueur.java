@@ -24,6 +24,13 @@ public abstract class Joueur {
 		}
 	}
 	
+	/**
+	 * Méthode d'instance permettant de vérifier les différentes combinaisons possibles entre les cartes indiquées
+	 * @param c1 la carte 1. (Carte)
+	 * @param c2 la carte 2. (Carte)
+	 * @param c3 la carte 3. (Carte)
+	 * @return  le nombre de pions que l'on obtiens avec cette combinaison de cartes. (int)
+	 * */
 	public int combinaison(Carte c1,Carte c2,Carte c3)
 	{
 		int res=0;
