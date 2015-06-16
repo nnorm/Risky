@@ -1,5 +1,5 @@
 import java.util.*;
-
+import java.awt.*;
 /**
  * Classe abstraite traduisant le concept abstrait de joueur. 
  * */
@@ -7,10 +7,12 @@ public abstract class Joueur {
 
 	protected String pseudo;
 	protected int armeesDispo;
-	//protected Color couleur;
+	protected Color couleur;
 	protected LinkedList<Carte> main;
 	protected LinkedList<Continent> continent;
 	protected LinkedList<Pays> pays;
+	public static int colorIndex = 0;
+	protected static Color colorList[] = {Color.blue, Color.cyan, Color.green, Color.magenta, Color.orange, Color.pink};
 	
 	/**
 	 * Permet de distribuer les pions entre les pays du joueur.
