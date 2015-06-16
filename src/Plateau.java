@@ -5,7 +5,7 @@ public class Plateau {
 	private int longueur;
 	private int largeur;
 	private Continent[] continent;
-	private ArrayList<Carte> carte;
+	private LinkedList<Carte> carte;
 	
 	public Plateau(int largeur, int longueur ){
 		
@@ -30,11 +30,7 @@ public class Plateau {
 	}
 	
 	public Carte piocherCarte() {
-		Carte c = this.carte.get(0);
-// permet d'avoir toujours une carte en indice 0
-		for(int i =0;i<this.carte.size();i=i+2){ 
-			this.carte.add(i,this.carte.get(i+1));
-		}
+		Carte c =this.carte.removeFirst();
 		return c;
 	}
 
