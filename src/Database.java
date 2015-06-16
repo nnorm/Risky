@@ -3,20 +3,29 @@ import java.sql.*;
 public class Database {
 	private String[] champs;
 	private String[] table;
+	private String[] valeur;
 	private String condition;
 	
-	public Database(String[] champs, String[] table, String condition){
+	public Database(String[] champs, String[] table, String[] valeur, String condition){
 		this.champs = champs;
 		this.table = table;
+		this.valeur = valeur;
 		this.condition = condition;
 	}
 	
-	public void requeteSlt(String[] champs, String[] table, String condition){
+	public void requeteSlt(boolean where){
+		String res = "";
 		String ch = "";
-		for(int i = 0; i< champs.length-1; i++){
-			ch += champs[i] + ", "; 
+		String tab = "";
+		String conca = "";
+		for(int i = 0; i<= this.champs.length-2; i++){
+			ch += this.champs[i] + ", "; 
 		}
-		ch += champs[champs.length];
+		ch += this.champs[this.champs.length-1];
+		for(int i = 0; i<= this.table.length-2; i++){
+			tab += this.table[i] + ", "; 
+		}
+		tab += this.table[this.table.length-1];
 		try { 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
@@ -27,11 +36,58 @@ public class Database {
 		try{
 			Connection vCon = DriverManager.getConnection("jdbc:oracle:thin:@bd11:1521:bd11", "infs2_prj06","azerty01");
 			Statement vSt = vCon.createStatement();
-			ResultSet vRs = vSt.executeQuery("SELECT " + champs + " FROM " + table);
+			ResultSet vRs = null;
+			conca = "SELECT " + ch + " FROM " + tab;
+			if(where == true){
+				conca = conca + " WHERE " + this.condition;
+				vRs = vSt.executeQuery(conca);
+			}else{
+				vRs = vSt.executeQuery(conca);
+			}
 			while(vRs.next())
 			{	
-				System.out.println();
+				for(int i = 0; i < this.champs.length; i++){
+					res += vRs.getString(this.champs[i]) + " ";
+				}
+				System.out.println(res);
 			}
+		}
+		catch(Exception e){
+			System.out.print(e);
+		}
+	}
+	
+	public void requeteInsert(){
+		String ch = "";
+		String val = "";
+		String conca = "";
+		String tab = "";
+		for(int i = 0; i<= this.champs.length-2; i++){
+			ch += this.champs[i] + ", "; 
+		}
+		ch += this.champs[this.champs.length-1];
+		for(int i = 0; i<= this.valeur.length-2; i++){
+			val += "'" + this.valeur[i] + "'" + ", "; 
+		}
+		val += "'" + this.valeur[this.valeur.length-1] + "'";
+		for(int i = 0; i<= this.table.length-2; i++){
+			tab += this.table[i] + ", "; 
+		}
+		tab += this.table[this.table.length-1];
+		try { 
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Where is your Oracle JDBC Driver?");
+			e.printStackTrace();
+		}
+		
+		try{
+			Connection vCon = DriverManager.getConnection("jdbc:oracle:thin:@bd11:1521:bd11", "infs2_prj06","azerty01");
+			Statement vSt = vCon.createStatement();
+			conca = "INSERT INTO " + tab + "(" + ch + ") VALUES (" + val + ")";
+			System.out.println(conca);
+			vSt.executeUpdate(conca);
+			System.out.println("Insertion reussi");
 		}
 		catch(Exception e){
 			System.out.print(e);

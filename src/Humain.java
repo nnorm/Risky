@@ -15,5 +15,7 @@ public class Humain extends Joueur{
 		this.main = new LinkedList<Carte>();
 		this.pays = new LinkedList<Pays>();
 		this.continent = new LinkedList<Continent>();
+		this.couleur = Humain.colorList[Humain.colorIndex];
+		Humain.colorIndex++;
 	}
 }

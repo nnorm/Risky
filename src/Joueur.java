@@ -1,5 +1,9 @@
 import java.util.*;
+<<<<<<< HEAD
 
+=======
+import java.awt.*;
+>>>>>>> 3876c2fe0d6d2d825155df2594134eb6c0c58621
 /**
  * Classe abstraite traduisant le concept abstrait de joueur. 
  * */
@@ -7,10 +11,12 @@ public abstract class Joueur {
 
 	protected String pseudo;
 	protected int armeesDispo;
-	//protected Color couleur;
+	protected Color couleur;
 	protected LinkedList<Carte> main;
 	protected LinkedList<Continent> continent;
 	protected LinkedList<Pays> pays;
+	public static int colorIndex = 0;
+	protected static Color colorList[] = {Color.blue, Color.cyan, Color.green, Color.magenta, Color.orange, Color.pink};
 	
 	/**
 	 * Permet de distribuer les pions entre les pays du joueur.
@@ -24,6 +30,13 @@ public abstract class Joueur {
 		}
 	}
 	
+	/**
+	 * Méthode d'instance permettant de vérifier les différentes combinaisons possibles entre les cartes indiquées
+	 * @param c1 la carte 1. (Carte)
+	 * @param c2 la carte 2. (Carte)
+	 * @param c3 la carte 3. (Carte)
+	 * @return  le nombre de pions que l'on obtiens avec cette combinaison de cartes. (int)
+	 * */
 	public int combinaison(Carte c1,Carte c2,Carte c3)
 	{
 		int res=0;
@@ -80,5 +93,4 @@ public abstract class Joueur {
 	{
 		this.pays.add(p);
 	}
-
 }
