@@ -6,12 +6,15 @@ public class Plateau {
 	private int largeur;
 	private Continent[] continent;
 	private LinkedList<Carte> carte;
-	
+	private ArrayList<Joueur> joueur;
+	/**
+	 * constructeur manque creation continent
+	 * */
 	public Plateau(int largeur, int longueur ){
 		
 		this.largeur=largeur;
 		this.longueur=longueur;
-		
+		// creation de la liste de carte
 		for( int i=0; i<42; i++){ // créer les 42 carte
 			if(i>14){
 				this.carte.add(new Carte(TypeCarte.Soldat));
@@ -23,6 +26,11 @@ public class Plateau {
 				this.carte.add(new Carte(TypeCarte.Canon));
 			}
 		}
+	
+		
+		
+		
+		
 	}
 
 	public void shuffleCarts(){
