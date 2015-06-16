@@ -64,4 +64,23 @@ public class Continent {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	/**
+	 * methode d'insatnce qui renvoi si la personne as tout les pays du contient
+	 * @param liste pays
+	 * @return 
+	 */
+	public boolean appartient(ArrayList<Pays> pays){
+		boolean res=false;
+		int i =0;
+		int nbPaysDansContinent = this.pays.size();
+		int PaysDedant=0;
+		while(i<pays.size()){
+			if(this.pays.contains(pays.get(i))){
+				PaysDedant++;
+			}
+			i++;
+		}
+		if(PaysDedant==nbPaysDansContinent)res=true;
+		return res;
+	}
 }
