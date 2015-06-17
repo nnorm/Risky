@@ -1,9 +1,15 @@
-
+/**
+ * Classe décrivant une matrice d'adjacence des pays. 
+ * */
 public class PaysAdjacents {
-    public static boolean[][] pays;
+    public static boolean[][] pays; //matrice d'adjacence
     
+    /**
+     * Méthode de classe initialisant la matrice d'adjacence. 
+     * */
     public static void initMatrix() {
-        PaysAdjacents.pays = new boolean[42][42];
+        PaysAdjacents.pays = new boolean[42][42]; //initalise un tableau de boolean initialisé à false
+        //défini les différentes adjacences entre les pays qui le sont
         PaysAdjacents.pays[0][1] = true;
         PaysAdjacents.pays[0][2] = true;
         PaysAdjacents.pays[1][2] = true;
@@ -88,6 +94,7 @@ public class PaysAdjacents {
         PaysAdjacents.pays[39][41] = true;
         PaysAdjacents.pays[40][41] = true;
 
+        //finis de remplir les cases de manière à avoir une symétrie sur les adjacences
         for (int i = 0; i < 42 ; i++){
             for(int j = 0; j < 42; j++){
                 if(PaysAdjacents.pays[i][j] == true){PaysAdjacents.pays[j][i] = true;}
