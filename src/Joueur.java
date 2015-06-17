@@ -146,7 +146,7 @@ public abstract class Joueur {
 	}
 	
 	/**
-	 * 
+	 * methode qui renvoi le pays avec le plus d unite
 	 * @liste de pays
 	 * @return le pays avec le plus d armee
 	 */
