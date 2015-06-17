@@ -118,4 +118,12 @@ public abstract class Joueur {
 			this.ajouterArmeesDispo(this.continent.get(i).getBonusPion());
 		}
 	}
+	
+	/**
+	 * Affecte un plateau de jeu à ce joueur. Ne doit être utilisé que par le constructeur de Plateau
+	 */
+	public void setPlateau(Plateau p)
+	{
+		this.plateau = p;
+	}
 }
