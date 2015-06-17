@@ -1,11 +1,21 @@
 import java.sql.*;
 
+/**
+ * Classe permettant d'utiliser la base de données
+ * */
 public class Database {
 	private String[] champs;
 	private String[] table;
 	private String[] valeur;
 	private String condition;
 	
+	/**
+	 * Constructeur avec arguments.
+	 * @param champs les champs des requêtes. (String[])
+	 * @param table les tables sur lesquelles effectuer les requêtes. (String[])
+	 * @param valeur les valeurs pour les champs. (String[])
+	 * @param condition la condition du WHERE dans les requêtes. (String) 
+	 * */
 	public Database(String[] champs, String[] table, String[] valeur, String condition){
 		this.champs = champs;
 		this.table = table;
@@ -13,7 +23,11 @@ public class Database {
 		this.condition = condition;
 	}
 	
-	public void requeteSlt(boolean where){
+	/**
+	 * Affiche le résultat de la requête SELECT avec les paramètres entrés dans le constructeur.
+	 * @param where booléen indiquant si on utilise le where ou non. (boolean)
+	 * */
+	public String requeteSlt(boolean where){
 		String res = "";
 		String ch = "";
 		String tab = "";
@@ -44,19 +58,26 @@ public class Database {
 			}else{
 				vRs = vSt.executeQuery(conca);
 			}
+			String toReturn = "";
 			while(vRs.next())
 			{	
 				for(int i = 0; i < this.champs.length; i++){
 					res += vRs.getString(this.champs[i]) + " ";
 				}
 				System.out.println(res);
+				toReturn += res + "\n";
 			}
+			return toReturn;
 		}
 		catch(Exception e){
 			System.out.print(e);
+			return "";
 		}
 	}
 	
+	/**
+	 * Méthode permettant d'effectuer une requête d'insertion. 
+	 * */
 	public void requeteInsert(){
 		String ch = "";
 		String val = "";
@@ -104,6 +125,9 @@ public class Database {
 		}
 	}
 	
+	/**
+	 * Méthode permettant d'effectuer une requête de suppression. 
+	 * */	
 	public void requeteDelete(){
 		String tab = "";
 		String conca = "";
