@@ -35,12 +35,7 @@ public class Pays {
 	 */
 	public boolean isVoisin(Pays p)
 	{
-		boolean res = false;
-		if( PaysAdjacents.pays[this.numPays][p.getNumPays()] == true)
-		{
-			res = true;
-		}
-		return res;
+		return PaysAdjacents.pays[this.numPays][p.getNumPays()];
 	}
 	
 	/**
@@ -52,7 +47,8 @@ public class Pays {
 	public void deplacerPions(Pays p, int nbPions) throws RuntimeException
 	{
 		if(!this.isVoisin(p)) throw new RuntimeException("requête impossible");
-		
+		p.ajouterPions(nbPions);
+		this.enleverPions(nbPions);
 	}
 	
 	/**
