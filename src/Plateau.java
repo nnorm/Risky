@@ -61,7 +61,7 @@ public class Plateau {
 	}
 	
 	/**
-	 * 
+	 * retourn le continent 
 	 */
 	public Continent getContinent(int i){
 		return this.continent[i];

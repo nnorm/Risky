@@ -92,8 +92,12 @@ public class IA extends Joueur
 			}
 			int cpt=0;
 			boolean arr=false;
-			
-			for( int j=0;j<=this.plateau.)
+			boolean trouver=false;
+			for( int j=0;j<=5 && trouver==false;j++){
+				for(int p=0;p<=this.plateau.getContinent(j).;p++){
+					
+				}
+			}
 		
 			
 			

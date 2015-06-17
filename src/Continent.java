@@ -82,4 +82,12 @@ public class Continent {
 		if(PaysDedant==nbPaysDansContinent)res=true;
 		return res;
 	}
+	
+	/**
+	 * methode qui renvoi la liste de pays
+	 * @return
+	 */
+	public ArrayList<Pays> getlistPays(){
+		return this.pays;
+	}
 }
