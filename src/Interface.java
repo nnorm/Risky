@@ -1,6 +1,9 @@
 import java.util.*;
 import javax.swing.JFrame;
 
+/**
+ * Classe qui défini les fonctions liées à l'interface graphique 
+ * */
 public class Interface {
 	public static void main(String[] args){
 
