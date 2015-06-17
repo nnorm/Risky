@@ -12,8 +12,9 @@ public class Plateau {
 	/**
 	 * Constructeur du plateau ; à compléter avec la création des continents
 	 * */
-	public Plateau(int largeur, int longueur ){
+	public Plateau(int largeur, int longueur, LinkedList<Joueur> joueurs ){
 		
+		this.joueurs = joueurs;
 		this.largeur=largeur;
 		this.longueur=longueur;
 		this.carte = new LinkedList<Carte>();
@@ -27,6 +28,10 @@ public class Plateau {
 			if(i>=28){
 				this.carte.add(new Carte(TypeCarte.Canon));
 			}
+		}
+		for(Joueur j:this.joueurs)
+		{
+			j.setPlateau(this);
 		}
 	}
 	

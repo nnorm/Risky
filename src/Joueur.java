@@ -14,7 +14,7 @@ public abstract class Joueur {
 	protected LinkedList<Pays> pays;
 	public static int colorIndex = 0;
 	protected static Color colorList[] = {Color.blue, Color.cyan, Color.green, Color.magenta, Color.orange, Color.pink};
-	
+	protected Plateau plateau;
 	/**
 	 * Permet de distribuer les pions entre les pays du joueur.
 	 * @param p le pays dans lequel il faut ajouter des pions. (Pays)
@@ -89,5 +89,41 @@ public abstract class Joueur {
 	public void acquerirPays(Pays p)
 	{
 		this.pays.add(p);
+	}
+	
+	/**
+	 * ajoute 1 unite sur tout les pays du joueur et enleve 1 unite a l'armee dispo
+	 * @param pays
+	 */
+	public void mettre1ArmePays(LinkedList<Pays> pays){
+		for(Pays p : pays){
+			p.ajouterPions(1);
+			this.armeesDispo=this.armeesDispo-1;
+		}
+	}
+	
+	/**
+	 * ajout un continent a un joueur
+	 * @param c
+	 */
+	public void ajoutContinent(Continent c){
+		this.continent.add(c);
+	}
+	
+	/**
+	 * ajoute le nb de bonus d'un continent
+	 */
+	public void ajNbUniteContinent(){
+		for(int i =0; i<this.continent.size();i++){
+			this.ajouterArmeesDispo(this.continent.get(i).getBonusPion());
+		}
+	}
+	
+	/**
+	 * Affecte un plateau de jeu à ce joueur. Ne doit être utilisé que par le constructeur de Plateau
+	 */
+	public void setPlateau(Plateau p)
+	{
+		this.plateau = p;
 	}
 }
