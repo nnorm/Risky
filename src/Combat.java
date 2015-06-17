@@ -14,7 +14,9 @@ public class Combat {
 	 * @param nbPionsAtk le nombre de pions attaquant. (int)
 	 * */
 	public Combat(Pays attaquant, Pays defenseur, int nbPionsAtk)
-	{
+	{	
+		this.paysAtt=attaquant;
+		this.paysDef=defenseur;
 		if(nbPionsAtk <1 || attaquant.getNbArmees() < 2 || defenseur.getNbArmees() < 1)
 			throw new IllegalArgumentException("requête impossible");
 		
