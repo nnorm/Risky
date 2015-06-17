@@ -66,10 +66,20 @@ public class Database {
 			ch += this.champs[i] + ", "; 
 		}
 		ch += this.champs[this.champs.length-1];
+		
 		for(int i = 0; i<= this.valeur.length-2; i++){
-			val += "'" + this.valeur[i] + "'" + ", "; 
+			try{
+				val += "" + Integer.parseInt(this.valeur[i]) + ", "; 
+			}catch(Exception e){
+				val += "'" + this.valeur[i] + "'" + ", "; 
+			}
 		}
-		val += "'" + this.valeur[this.valeur.length-1] + "'";
+		try{
+			val += "" + Integer.parseInt(this.valeur[this.valeur.length-1]);
+		}catch(Exception e){
+			val += "'" + this.valeur[this.valeur.length-1] + "'";
+		}
+	
 		for(int i = 0; i<= this.table.length-2; i++){
 			tab += this.table[i] + ", "; 
 		}
