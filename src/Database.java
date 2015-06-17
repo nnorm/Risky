@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.util.*;
+
 
 /**
  * Classe permettant d'utiliser la base de données
@@ -7,6 +9,7 @@ public class Database {
 	private String[] champs;
 	private String[] table;
 	private String[] valeur;
+	private LinkedList<String> resultat;
 	private String condition;
 	
 	/**
@@ -21,13 +24,14 @@ public class Database {
 		this.table = table;
 		this.valeur = valeur;
 		this.condition = condition;
+		this.resultat = new LinkedList<String>();
 	}
 	
 	/**
 	 * Affiche le résultat de la requête SELECT avec les paramètres entrés dans le constructeur.
 	 * @param where booléen indiquant si on utilise le where ou non. (boolean)
 	 * */
-	public String requeteSlt(boolean where){
+	public LinkedList<String> requeteSlt(boolean where){
 		String res = "";
 		String ch = "";
 		String tab = "";
@@ -52,26 +56,28 @@ public class Database {
 			Statement vSt = vCon.createStatement();
 			ResultSet vRs = null;
 			conca = "SELECT " + ch + " FROM " + tab;
-			if(where == true){
+			if(where == true)
+			{
 				conca = conca + " WHERE " + this.condition;
 				vRs = vSt.executeQuery(conca);
-			}else{
-				vRs = vSt.executeQuery(conca);
 			}
-			String toReturn = "";
+			else
+				vRs = vSt.executeQuery(conca);
+			
 			while(vRs.next())
 			{	
 				for(int i = 0; i < this.champs.length; i++){
 					res += vRs.getString(this.champs[i]) + " ";
 				}
 				System.out.println(res);
-				toReturn += res + "\n";
+				this.resultat.add(res);
+				res = "";
 			}
-			return toReturn;
+			return this.resultat;
 		}
 		catch(Exception e){
 			System.out.print(e);
-			return "";
+			return null;
 		}
 	}
 	
