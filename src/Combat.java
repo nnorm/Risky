@@ -32,14 +32,14 @@ public class Combat {
 	 */
 	private static void tribulles(int t[])
      {
-             for (int i=0 ;i<=(t.length-2);i++)
-                     for (int j=(t.length-1);i < j;j--)
-                             if (t[j] > t[j-1])
-                             {
-                                     int x=t[j-1];
-                                     t[j-1]=t[j];
-                                     t[j]=x;
-                             }
+		for (int i=0 ;i<=(t.length-2);i++)
+			for (int j=(t.length-1);i < j;j--)
+				if (t[j] > t[j-1])
+                {
+					int x=t[j-1];
+                    t[j-1]=t[j];
+                    t[j]=x;
+                }
      } 
    
 	/** 
@@ -54,14 +54,17 @@ public class Combat {
 		int[] tabAt =new int[this.nbDesAttaque];
 		int[] tabDef =new int[this.nbDesDefense];
 	
+		//génération des résultats du jeté de dés des attaquants
 		for(int i=0;i<=tabAt.length;i++){
 			tabAt[i]=rnd.nextInt(6)+1;
 		}
-
+		
+		//génération des résultats du jeté de dés des défenseurs
 		for(int j=0;j<=tabDef.length;j++){
 			tabDef[j]=rnd.nextInt(6)+1;
 		}
 		
+		//triage des dés
 		tribulles(tabDef);
 		tribulles(tabAt);
 		

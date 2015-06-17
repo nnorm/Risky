@@ -8,6 +8,7 @@ public class Plateau {
 	private int largeur;
 	private Continent[] continent;
 	private LinkedList<Carte> carte;
+	private LinkedList<Joueur> joueurs;
 	/**
 	 * Constructeur du plateau ; à compléter avec la création des continents
 	 * */
