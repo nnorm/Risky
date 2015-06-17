@@ -126,4 +126,57 @@ public abstract class Joueur {
 	{
 		this.plateau = p;
 	}
+	
+	/**
+	 * methode liste de pays attaquable
+	 */
+	public ArrayList<Pays> paysvoisinAtt(Pays pays){
+		ArrayList<Pays> paysvoisinAtt=new ArrayList<Pays> ();
+		
+		for(int i=0;i<5;i++){
+			Continent continent2p= this.plateau.getContinent(i);
+			ArrayList<Pays> paysContinent= continent2p.getlistPays();
+			for(Pays p:paysContinent){
+				if(p.isVoisin(pays) && !p.getOwner().equals(this.pseudo)){
+					paysvoisinAtt.add(p);
+				}
+			}
+		}
+		return paysvoisinAtt;
+	}
+	
+	/**
+	 * 
+	 * @liste de pays
+	 * @return le pays avec le plus d armee
+	 */
+	public Pays paysPlusArme(LinkedList<Pays> pays2){
+		int pMax=pays2.get(0).getNbArmees();
+		Pays paysMax =pays2.get(0);
+		for(Pays p:pays2){
+			if(pMax<p.getNbArmees())
+				pMax=p.getNbArmees();
+				paysMax =p;
+		}
+		return paysMax;
+	}
+	
+	/**
+	 * methode qui renvoi les pays voisins allier
+	 * @param pays
+	 * @return
+	 */
+	public ArrayList<Pays> listePVoisinAll(Pays pays){
+		ArrayList<Pays> paysvoisinAl= new ArrayList<Pays> ();
+		for(int i=0;i<5;i++){
+			Continent continent2p= this.plateau.getContinent(i);
+			ArrayList<Pays> paysContinent= continent2p.getlistPays();
+			for(Pays p:paysContinent){
+				if(p.isVoisin(pays) && !p.getOwner().equals(this.pseudo) ){
+					paysvoisinAl.add(p);
+				}
+			}
+		}
+		return paysvoisinAl;
+	}
 }

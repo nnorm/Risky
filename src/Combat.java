@@ -44,10 +44,12 @@ public class Combat {
    
 	/** 
 	 * Méthode d'instance trouvant l'issue du combat.
+	 * return true si il a gagner
 	 * */
-	public void effectuerCombat()
+	public boolean effectuerCombat()
 	{
 		Random rnd = new Random();
+		boolean res=false;
 		
 		int resultatNbDef=this.paysDef.getNbArmees();//troupe qui reste sur territoire
 		int resultatNbAtt=this.nbDesAttaque;//troupe encore en vie apres combat
@@ -79,11 +81,13 @@ public class Combat {
 		if(resultatNbDef==0){
 			this.paysDef.setOwner(this.paysAtt.getOwner());
 			this.paysDef.ajouterPions(resultatNbAtt);
+			res=true;
 		}
 		else {
 			this.paysAtt.ajouterPions(resultatNbAtt);
 			this.paysDef.enleverPions(this.paysDef.getNbArmees()-resultatNbDef);
 	
 		}
+		return res;
 	}
 }

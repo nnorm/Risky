@@ -80,32 +80,40 @@ public class IA extends Joueur
 	 *  
 	 */
 	public void unTour(){
-		if(this.lvlDifficulte==1){
+		if(this.lvlDifficulte==1){ // level 1 fini 
+			
 			Random rmd =new Random();
-			int paysAtt1= rmd.nextInt(this.pays.size())+1;
-			int paysAtt2= rmd.nextInt(this.pays.size())+1;
+			
+			int numPaysAtt1 = rmd.nextInt(this.pays.size())+1;
+			ArrayList<Pays> paysvoisinAtt1=this.paysvoisinAtt(this.pays.get(numPaysAtt1));
+			
+			boolean vic=false;
+			
 			this.ajNbUniteContinent();
 			this.armeesDispo+=this.BonusCarte();
 			for(int i =0;this.armeesDispo !=0;i++){
 				this.pays.get(i).ajouterPions(1);
 				this.armeesDispo=this.armeesDispo-1;
 			}
-			int cpt=0;
-			boolean arr=false;
-			boolean trouver=false;
-			for( int j=0;j<=5 && trouver==false;j++){
-				for(int p=0;p<=this.plateau.getContinent(j).;p++){
-					
-				}
+			
+			while(paysvoisinAtt1.size()==0 ){ //cherche a voir des pays attaquable
+				numPaysAtt1 = rmd.nextInt(this.pays.size())+1;
+				paysvoisinAtt1=this.paysvoisinAtt(this.pays.get(numPaysAtt1));
 			}
-		
+
+			Pays paysdef1 =paysvoisinAtt1.get(rmd.nextInt(paysvoisinAtt1.size()+1));
+			Pays paysAt1 =this.pays.get(numPaysAtt1); 
+	
+			int nbArmAt1=paysAt1.getNbArmees()-1;
+			paysAt1.enleverPions(nbArmAt1);
 			
-			
-			while(cpt<2 && arr==false){
-				
-				Combat b1=new Combat(paysAtt1,)
+			for(int cpt =0;cpt<2 && vic==false;cpt++){ // combat
+				Combat cb1 =new Combat(paysAt1,paysdef1,nbArmAt1);
+				if(cb1.effectuerCombat()) vic=true;
 			}
 			
+			Pays paysmax=this.paysPlusArme(this.pays);
+			paysmax.deplacerPions(this.paysvoisinAtt(paysmax).get(0) ,(paysmax.getNbArmees()/2));
 		}
 	}
 }

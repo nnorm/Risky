@@ -82,4 +82,9 @@ public class Pays {
 	{
 		return this.nbArmees;
 	}
+	
+	public Continent getContinent(){
+		return this.continent;
+	}
 }
+
