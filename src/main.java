@@ -1,7 +1,9 @@
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
- 
+ /**
+  * Classe main de test 
+  * */
 public class main {
  
 	public static void main(String[] argv) {
@@ -10,6 +12,7 @@ public class main {
 		String[] table = {"PARTICIPER"};
 		String[] val = {"J001","P001","blue", "3000"};
 		Database bd = new Database(champs,table,val,"");
-		bd.requeteInsert();
+		bd.requeteInsert(); /* LANCE UNE EXCEPTION */
+		bd.requeteSlt(false);
 	}
 }
