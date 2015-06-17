@@ -1,4 +1,5 @@
 import java.util.*;
+import javax.swing.JFrame;
 
 import javax.swing.*;
 
@@ -8,6 +9,7 @@ import java.awt.event.*;
 /**
  * Classe qui défini les fonctions liées à l'interface graphique 
  * */
+<<<<<<< HEAD
 @SuppressWarnings("serial")
 public class Interface extends JFrame implements ActionListener{
 	private JPanel panel;
@@ -52,5 +54,22 @@ public class Interface extends JFrame implements ActionListener{
 	public void display()
 	{
 		setVisible(true);
+=======
+public class Interface {
+	public static void main(String[] args){
+
+	    JFrame fenetre = new JFrame();
+
+	    fenetre.setTitle("Risky");
+
+
+	    fenetre.setSize(400, 100);
+
+	    fenetre.setLocationRelativeTo(null);
+
+	    fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
+
+	    fenetre.setVisible(true);
+>>>>>>> 0c9e0518e87ab0ab897f86d5ebf777101b1cf989
 	}
 }

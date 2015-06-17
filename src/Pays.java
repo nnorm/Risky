@@ -3,6 +3,7 @@
  * */
 public class Pays {
 	private String nom;
+	private int numPays;
 	private int nbArmees;
 	private Continent continent;
 	private Joueur owner;
@@ -34,12 +35,7 @@ public class Pays {
 	 */
 	public boolean isVoisin(Pays p)
 	{
-		boolean res = false;
-		for(int i = 0; i < this.frontaliers.length && !res; i++)
-		{
-			res = p == frontaliers[i];
-		}
-		return res;
+		return PaysAdjacents.pays[this.numPays][p.getNumPays()];
 	}
 	
 	/**
@@ -51,7 +47,8 @@ public class Pays {
 	public void deplacerPions(Pays p, int nbPions) throws RuntimeException
 	{
 		if(!this.isVoisin(p)) throw new RuntimeException("requête impossible");
-		
+		p.ajouterPions(nbPions);
+		this.enleverPions(nbPions);
 	}
 	
 	/**
@@ -85,6 +82,10 @@ public class Pays {
 	
 	public Continent getContinent(){
 		return this.continent;
+	}
+	public int getNumPays()
+	{
+		return this.numPays;
 	}
 }
 
