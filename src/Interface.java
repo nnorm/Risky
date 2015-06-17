@@ -12,7 +12,9 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class Interface extends JFrame implements ActionListener{
 	private JPanel panel;
+	private JLabel labeltest;
 	private JButton buttontest;
+	private JTextField field;
 	
 	public Interface(String title, int width, int height)
 	{
@@ -31,10 +33,14 @@ public class Interface extends JFrame implements ActionListener{
 		
 		this.panel = new JPanel();
 		panel.setLayout(new FlowLayout());
-		panel.setBackground(Color.red);
+		panel.setBackground(new Color(120,120,120));
 		
-		JLabel labeltest = new JLabel("Fenetre de jeu");
+		labeltest = new JLabel("Fenetre de jeu");
 		panel.add(labeltest);
+		
+		field = new JTextField();
+		field.setColumns(10);
+		panel.add(field);
 		
 		this.buttontest = new JButton("clicky clicky, YOU BITCH");
 		buttontest.addActionListener(this);
@@ -46,7 +52,7 @@ public class Interface extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource() == buttontest)
-			System.out.println("BITCH");
+			labeltest.setText(field.getText());
 	}
 	
 	
