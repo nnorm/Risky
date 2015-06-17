@@ -60,4 +60,10 @@ public class Plateau {
 		this.shuffleCards();
 	}
 	
+	/**
+	 * 
+	 */
+	public Continent getContinent(int i){
+		return this.continent[i];
+	}
 }

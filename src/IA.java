@@ -81,11 +81,25 @@ public class IA extends Joueur
 	 */
 	public void unTour(){
 		if(this.lvlDifficulte==1){
+			Random rmd =new Random();
+			int paysAtt1= rmd.nextInt(this.pays.size())+1;
+			int paysAtt2= rmd.nextInt(this.pays.size())+1;
 			this.ajNbUniteContinent();
 			this.armeesDispo+=this.BonusCarte();
 			for(int i =0;this.armeesDispo !=0;i++){
 				this.pays.get(i).ajouterPions(1);
 				this.armeesDispo=this.armeesDispo-1;
+			}
+			int cpt=0;
+			boolean arr=false;
+			
+			for( int j=0;j<=this.plateau.)
+		
+			
+			
+			while(cpt<2 && arr==false){
+				
+				Combat b1=new Combat(paysAtt1,)
 			}
 			
 		}
