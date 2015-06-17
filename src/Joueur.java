@@ -1,12 +1,14 @@
 import java.util.*;
 import java.awt.*;
 
+
 /**
  * Classe abstraite traduisant le concept abstrait de joueur. 
  * */
-public abstract class Joueur {
+public abstract class Joueur  {
 
 	protected String pseudo;
+	protected int idJ = 0;
 	protected int armeesDispo;
 	protected Color couleur;
 	protected LinkedList<Carte> main;
@@ -15,6 +17,8 @@ public abstract class Joueur {
 	public static int colorIndex = 0;
 	protected static Color colorList[] = {Color.blue, Color.cyan, Color.green, Color.magenta, Color.orange, Color.pink};
 	protected Plateau plateau;
+	protected int idP; 
+	
 	/**
 	 * Permet de distribuer les pions entre les pays du joueur.
 	 * @param p le pays dans lequel il faut ajouter des pions. (Pays)
@@ -179,4 +183,65 @@ public abstract class Joueur {
 		}
 		return paysvoisinAl;
 	}
+	
+	public String idJoueur(){
+		String res= "";
+		if(this.idJ < 10){
+		res = "J00" + "" + this.idJ;
+		}
+		else if(this.idJ<100){
+			res = "J0" + "" + this.idJ;
+		}
+		else{
+			res = "J" + "" + this.idJ;
+		}
+		return res;
+		
+	}
+	public String Gagnant(){
+		String res= "";
+		if (this.pays.size() == 42){
+			res = idJoueur();
+			this.idP++; 
+		}
+		return res;
+	}
+	
+	public int uniteTotal(){
+		int unite = 0;
+		for (int i = 0; i< this.pays.size();i++){
+			unite += this.pays.get(i).getNbArmees();
+		}
+		return unite;
+	}
+	
+	
+	
+	public void enregister(){
+		String[] champs = {"id_joueur","pseudo"};
+		String[] joueur = {idJoueur(), this.pseudo};
+		String[] table = {"JOUEUR"};
+		Database dataJoueur = new Database(champs, table,joueur,"");
+		dataJoueur.requeteInsert();
+		
+		String[] champs2 = {"id_partie","id_gagnant","datepartie","nbarmees"};
+		String[] table2 = {"PARTIE"};
+		String id = "" + this.idP;
+		String nbArm = "" + uniteTotal();
+		String[] gagnant = {id,Gagnant(),null,nbArm};
+		Database dataGagnant = new Database(champs2, table2,gagnant,"");
+		dataGagnant.requeteInsert();
+		
+		String couleur = "" + this.couleur;
+		String[] table3 = {"PARTICIPER"};
+		String[] champs3 = {"id_partie","id_joueur","couleur","score"};
+		String[] participe = {id,idJoueur(),couleur,"0"};
+		Database dataParticiper = new Database(champs3, table3,participe,"");
+		dataParticiper.requeteInsert();
+	
+	
+	}
+	
+	
+	
 }
