@@ -187,10 +187,11 @@ public abstract class Joueur  {
 		return paysvoisinAl;
 	}
 	
-	public String idJoueur(){
+	public String idJoueur()
+	{
 		String res= "";
 		if(this.idJ < 10){
-		res = "J00" + "" + this.idJ;
+			res = "J00" + "" + this.idJ;
 		}
 		else if(this.idJ<100){
 			res = "J0" + "" + this.idJ;
@@ -201,7 +202,8 @@ public abstract class Joueur  {
 		return res;
 		
 	}
-	public String Gagnant(){
+	public String Gagnant()
+	{
 		String res= "";
 		if (this.pays.size() == 42){
 			res = idJoueur();
@@ -210,7 +212,8 @@ public abstract class Joueur  {
 		return res;
 	}
 	
-	public int uniteTotal(){
+	public int uniteTotal()
+	{
 		int unite = 0;
 		for (int i = 0; i< this.pays.size();i++){
 			unite += this.pays.get(i).getNbArmees();
@@ -224,7 +227,8 @@ public abstract class Joueur  {
 	
 	
 	
-	public void enregister(){
+	public void enregister()
+	{
 		String[] champs = {"id_joueur","pseudo"};
 		String[] joueur = {idJoueur(), this.pseudo};
 		String[] table = {"JOUEUR"};
@@ -248,6 +252,10 @@ public abstract class Joueur  {
 	
 	}
 	
+	public void supprimer(String[] table, String condition){
+		Database bd = new Database(null,table,null,condition);
+		bd.requeteDelete();
+	}
 	
 	
 }

@@ -1,12 +1,5 @@
 import java.util.*;
 
-<<<<<<< HEAD
-/**
- * Classe qui défini les fonctions liées à l'interface graphique 
- * */
-public class Interface {
-
-=======
 import javax.swing.*;
 
 import java.awt.*;
@@ -16,7 +9,8 @@ import java.awt.event.*;
  * Classe qui définie les fonctions liées à l'interface graphique 
  * */
 @SuppressWarnings("serial")
-public class Interface extends JFrame implements ActionListener{
+public class Interface extends JFrame implements ActionListener
+{
 	/* Le panel principal */
 	private JPanel mainPanel;
 		/* Le panel contenant la carte */
@@ -121,5 +115,4 @@ public class Interface extends JFrame implements ActionListener{
 	{
 		setVisible(true);
 	}
->>>>>>> 95ad7718ca16e283c9671ce018f6eac1e1e9dbd2
 }

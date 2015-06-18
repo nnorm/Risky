@@ -180,7 +180,10 @@ public class IA extends Joueur
 				}
 				for(int cpt =0;cpt<2 && vic==false;cpt++){ // combat
 					Combat cb1 =new Combat(paysAt1,paysdef1,nbArmAt1);
-					if(cb1.effectuerCombat()) vic=true;
+					if(cb1.effectuerCombat()){ 
+						vic=true;
+						this.main.add(this.plateau.piocherCarte());
+					}
 				}
 			}
 			Pays paysmax=this.paysPlusArme(this.pays);
