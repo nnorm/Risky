@@ -245,9 +245,10 @@ public abstract class Joueur  {
 		dataGagnant.requeteInsert();
 		
 		String couleur = "" + this.couleur;
+		String scoreJ = "" +this.score;
 		String[] table3 = {"PARTICIPER"};
 		String[] champs3 = {"id_partie","id_joueur","couleur","score"};
-		String[] participe = {id,idJoueur(),couleur,"0"};
+		String[] participe = {id,idJoueur(),couleur,scoreJ};
 		Database dataParticiper = new Database(champs3, table3,participe,"");
 		dataParticiper.requeteInsert();
 	
