@@ -89,9 +89,51 @@ public class IA extends Joueur
 		}
 		
 		if(this.lvlDifficulte==2){ // distribution point strategique lvl 2
-			
-				
-			
+			int[] paysParContinent = new int[this.plateau.getContinentLength()];
+			int[] indicesContinents = new int[this.plateau.getContinentLength()];
+			for(int i = 0; i < indicesContinents.length; i++) indicesContinents[i] = i;
+			for(int i = 0; i < paysParContinent.length; i++)
+			{
+				for(int j = 0; i < this.plateau.getContinent(i).getlistPays().size(); j++)
+				{
+					if(this.plateau.getContinent(i).getlistPays().get(j).getOwner().equals(this))
+					{
+						paysParContinent[i] ++;
+					}
+				}
+			}
+			int max = -1;
+			int indMax = -1;
+			int temp = -1;
+			for(int i = 0; i < paysParContinent.length; i++)
+			{
+				max = -1;
+				indMax = -1;
+				for(int j = i; j < paysParContinent.length; j++)
+				{
+					if(paysParContinent[j] > max)
+						{
+						max = paysParContinent[j];
+						indMax = j;
+						}
+				}
+				temp = paysParContinent[indMax];
+				paysParContinent[indMax] = paysParContinent[i];
+				paysParContinent[i] = temp;
+				temp = indicesContinents[indMax];
+				indicesContinents[indMax] = indicesContinents[i];
+				indicesContinents[i] = temp;
+			}
+
+			for(int i = 0; i < indicesContinents.length && this.armeesDispo != 0; i++)
+			{
+				temp = this.armeesDispo / 2;
+				temp /= this.plateau.getContinent(i).getlistPays().size();
+				for(Pays p: this.plateau.getContinent(i).getlistPays())
+				{
+					this.distribuer(p, temp);
+				}
+			}
 		}
 	}
 	
@@ -119,12 +161,16 @@ public class IA extends Joueur
 				}
 				
 			}
+			if(nbMax > 0)
+			{
 			this.plateau.mettreDsPaquet(this.main.get(posCart1Max));
 			this.plateau.mettreDsPaquet(this.main.get(posCart2Max));
 			this.plateau.mettreDsPaquet(this.main.get(posCart3Max));
 			this.main.remove(posCart1Max);
 			this.main.remove(posCart2Max);
 			this.main.remove(posCart3Max);
+			this.ajouterArmeesDispo(nbMax);
+			}
 		}
 		return nbMax;
 	}
@@ -135,9 +181,8 @@ public class IA extends Joueur
 	 *  
 	 */
 	public void unTour(){
+		Random rmd =new Random();
 		if(this.lvlDifficulte==1){ // level 1 fini 
-			
-			Random rmd =new Random();
 			
 			int numPaysAtt1 = rmd.nextInt(this.pays.size())+1;
 			ArrayList<Pays> paysvoisinAtt1=this.paysvoisinAtt(this.pays.get(numPaysAtt1));

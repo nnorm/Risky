@@ -66,4 +66,9 @@ public class Plateau {
 	public Continent getContinent(int i){
 		return this.continent[i];
 	}
+	
+	public int getContinentLength()
+	{
+		return this.continent.length;
+	}
 }
