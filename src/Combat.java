@@ -96,6 +96,14 @@ public class Combat {
 		return res;
 	}
 	
+	public Pays getAtt(){
+		return this.paysAtt;
+	}
+	
+	public Pays getDef(){
+		return this.paysDef;
+	}
+	
 	public int getScoreC(){
 		return this.scoreCombat;
 	}

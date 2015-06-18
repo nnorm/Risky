@@ -221,8 +221,9 @@ public abstract class Joueur  {
 		return unite;
 	}
 	
-	public int mettreAJourScore(){
-		this.score = Combat.getScoreC();
+	public void mettreAJourScore(Pays pays, Pays pays2, int nbPionsAtk){
+		Combat t = new Combat(pays, pays2, nbPionsAtk);
+		this.score += t.getScoreC();
 	}
 	
 	
