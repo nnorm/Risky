@@ -1,13 +1,19 @@
 /** 
  * Classe permettant d'utiliser le concept de pays dans le context du jeu.
  * */
-public class Pays {
+public class Pays implements Comparable{
 	private String nom;
 	private int numPays;
 	private int nbArmees;
 	private Continent continent;
 	private Joueur owner;
 	private Pays[] frontaliers;
+	
+	public int compareTo(Object o)
+	{
+		Pays p = (Pays)o;
+		return p.nbArmees - this.nbArmees;
+	}
 	
 	/**
 	 * Ajoute des armées

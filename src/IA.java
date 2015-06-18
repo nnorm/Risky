@@ -39,6 +39,51 @@ public class IA extends Joueur
 	}
 	
 	/**
+	 * Trie les continents par ordre décroissant du nombre de pays possédés par ce joueur
+	 * @return tableau contenant les indices des continents dans la liste de Plateau
+	 */
+	public int[] paysParContinent()
+	{
+		
+		int[] paysParContinent = new int[this.plateau.getContinentLength()];
+		int[] indicesContinents = new int[this.plateau.getContinentLength()];
+		for(int i = 0; i < indicesContinents.length; i++) indicesContinents[i] = i;
+		for(int i = 0; i < paysParContinent.length; i++)
+		{
+			for(int j = 0; i < this.plateau.getContinent(i).getlistPays().size(); j++)
+			{
+				if(this.plateau.getContinent(i).getlistPays().get(j).getOwner().equals(this))
+				{
+					paysParContinent[i] ++;
+				}
+			}
+		}
+		int max = -1;
+		int indMax = -1;
+		int temp = -1;
+		for(int i = 0; i < paysParContinent.length; i++)
+		{
+			max = -1;
+			indMax = -1;
+			for(int j = i; j < paysParContinent.length; j++)
+			{
+				if(paysParContinent[j] > max)
+					{
+					max = paysParContinent[j];
+					indMax = j;
+					}
+			}
+			temp = paysParContinent[indMax];
+			paysParContinent[indMax] = paysParContinent[i];
+			paysParContinent[i] = temp;
+			temp = indicesContinents[indMax];
+			indicesContinents[indMax] = indicesContinents[i];
+			indicesContinents[i] = temp;
+		}
+		return indicesContinents;
+	}
+	
+	/**
 	 * methode qui retourne si un pays a un autre p voisin mais n appartenant pas au mem continent
 	 * @param pays  p1
 	 * @return un boolean si un pays p1 a un voisin sur un autre continent
@@ -89,49 +134,15 @@ public class IA extends Joueur
 		}
 		
 		if(this.lvlDifficulte==2){ // distribution point strategique lvl 2
-			int[] paysParContinent = new int[this.plateau.getContinentLength()];
-			int[] indicesContinents = new int[this.plateau.getContinentLength()];
-			for(int i = 0; i < indicesContinents.length; i++) indicesContinents[i] = i;
-			for(int i = 0; i < paysParContinent.length; i++)
-			{
-				for(int j = 0; i < this.plateau.getContinent(i).getlistPays().size(); j++)
-				{
-					if(this.plateau.getContinent(i).getlistPays().get(j).getOwner().equals(this))
-					{
-						paysParContinent[i] ++;
-					}
-				}
-			}
-			int max = -1;
-			int indMax = -1;
-			int temp = -1;
-			for(int i = 0; i < paysParContinent.length; i++)
-			{
-				max = -1;
-				indMax = -1;
-				for(int j = i; j < paysParContinent.length; j++)
-				{
-					if(paysParContinent[j] > max)
-						{
-						max = paysParContinent[j];
-						indMax = j;
-						}
-				}
-				temp = paysParContinent[indMax];
-				paysParContinent[indMax] = paysParContinent[i];
-				paysParContinent[i] = temp;
-				temp = indicesContinents[indMax];
-				indicesContinents[indMax] = indicesContinents[i];
-				indicesContinents[i] = temp;
-			}
-
+			int[] indicesContinents = this.paysParContinent();
+			int temp;
 			for(int i = 0; i < indicesContinents.length && this.armeesDispo != 0; i++)
 			{
-				temp = this.armeesDispo / 2;
-				temp /= this.plateau.getContinent(i).getlistPays().size();
-				for(Pays p: this.plateau.getContinent(i).getlistPays())
+				temp = this.armeesDispo/2;
+				temp = temp/this.plateau.getContinent(i).getlistPays().size();
+				for(int j = 0; j < this.plateau.getContinent(i).getlistPays().size() && this.armeesDispo >= temp; j++)
 				{
-					this.distribuer(p, temp);
+					this.distribuer(this.plateau.getContinent(i).getlistPays().get(j), temp);
 				}
 			}
 		}
@@ -192,7 +203,7 @@ public class IA extends Joueur
 			int nbArmAt1=0;
 			
 			this.ajNbUniteContinent();
-			this.armeesDispo+=this.BonusCarte();
+			this.BonusCarte();
 			while(this.armeesDispo !=0){
 				int i=0;
 				for(  ;i<=this.pays.size();i++){ 
@@ -235,8 +246,24 @@ public class IA extends Joueur
 			paysmax.deplacerPions(this.paysvoisinAtt(paysmax).get(0) ,(paysmax.getNbArmees()/2));
 		}
 		if(this.lvlDifficulte==2){
+			this.ajNbUniteContinent();
+			this.BonusCarte();
+			ArrayList<Pays> listPays = null;
+			int[] indices = this.paysParContinent();
+			int temp;
+			for(int i = 0; i < indices.length; i++)
+			{
+				listPays = this.plateau.getContinent(i).getlistPays();
+				Collections.sort(listPays);
+				temp = this.armeesDispo/2;
+				temp = temp/this.plateau.getContinent(i).getlistPays().size();
+				for(int j = 0; j < this.plateau.getContinent(i).getlistPays().size() && this.armeesDispo >= temp; j++)
+				{
+					this.distribuer(this.plateau.getContinent(i).getlistPays().get(j), temp);
+				}
+			}
+			
 			
 		}
-		
 	}
 }
