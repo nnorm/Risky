@@ -21,6 +21,8 @@ public class Humain extends Joueur{
 		this.couleur = Humain.colorList[Humain.colorIndex];
 		Humain.colorIndex++;
 		this.idJ += 1 ;
+		this.score = 0;
+
 		
 	}
 }

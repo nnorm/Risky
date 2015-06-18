@@ -7,6 +7,7 @@ public class Combat {
 	private int nbDesDefense;
 	private Pays paysAtt;
 	private Pays paysDef;
+	private int scoreCombat = 0;
 	/**
 	 * Constructeur avec arguments.
 	 * @param attaquant le pays attaquant. (Pays)
@@ -17,6 +18,7 @@ public class Combat {
 	{	
 		this.paysAtt=attaquant;
 		this.paysDef=defenseur;
+		
 		if(nbPionsAtk <1 || attaquant.getNbArmees() < 2 || defenseur.getNbArmees() < 1)
 			throw new IllegalArgumentException("requête impossible");
 		
@@ -25,6 +27,7 @@ public class Combat {
 		
 		if(nbPionsAtk < 3) this.nbDesAttaque = nbPionsAtk;
 		else this.nbDesAttaque = 3;
+		
 	}
 	/**
 	 * methode tri a bulle
@@ -48,6 +51,7 @@ public class Combat {
 	 * */
 	public boolean effectuerCombat()
 	{
+		int defDep = this.nbDesDefense;
 		Random rnd = new Random();
 		boolean res=false;
 		
@@ -88,6 +92,11 @@ public class Combat {
 			this.paysDef.enleverPions(this.paysDef.getNbArmees()-resultatNbDef);
 	
 		}
+		this.scoreCombat = this.nbDesDefense - defDep;
 		return res;
+	}
+	
+	public int getScoreC(){
+		return this.scoreCombat;
 	}
 }

@@ -23,7 +23,8 @@ public class IA extends Joueur
 		this.pays = new LinkedList<Pays>();
 		this.continent = new LinkedList<Continent>();
 		this.couleur = Humain.colorList[Humain.colorIndex];
-		this.idJ += 1; 
+		this.idJ += 1;
+		this.score = 0;
 		
 		Humain.colorIndex++;
 		IA.nbIA++;

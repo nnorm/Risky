@@ -18,6 +18,7 @@ public abstract class Joueur  {
 	protected static Color colorList[] = {Color.blue, Color.cyan, Color.green, Color.magenta, Color.orange, Color.pink};
 	protected Plateau plateau;
 	protected int idP; 
+	protected int score;
 	
 	/**
 	 * Permet de distribuer les pions entre les pays du joueur.
@@ -93,6 +94,7 @@ public abstract class Joueur  {
 	public void acquerirPays(Pays p)
 	{
 		this.pays.add(p);
+		this.score += 2;
 	}
 	
 	/**
@@ -112,6 +114,7 @@ public abstract class Joueur  {
 	 */
 	public void ajoutContinent(Continent c){
 		this.continent.add(c);
+		this.score += 5;
 	}
 	
 	/**
@@ -215,6 +218,10 @@ public abstract class Joueur  {
 		return unite;
 	}
 	
+	public int mettreAJourScore(){
+		this.score = Combat.getScoreC();
+	}
+	
 	
 	
 	public void enregister(){
@@ -238,7 +245,6 @@ public abstract class Joueur  {
 		String[] participe = {id,idJoueur(),couleur,"0"};
 		Database dataParticiper = new Database(champs3, table3,participe,"");
 		dataParticiper.requeteInsert();
-	
 	
 	}
 	
