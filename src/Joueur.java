@@ -246,8 +246,9 @@ public abstract class Joueur  {
 	
 	}
 	
-	public void supprimer(){
-		
+	public void supprimer(String[] table, String condition){
+		Database bd = new Database(null,table,null,condition);
+		bd.requeteDelete();
 	}
 	
 	
