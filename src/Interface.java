@@ -17,6 +17,22 @@ public class Interface extends JFrame implements ActionListener
 		private JPanel panelCarte;
 		/* Le panel contenant les infos sur le joueur */
 		private JPanel panelInfoJoueur;
+			private JLabel InfoJoueur_joueur;
+			private JLabel InfoJoueur_nbSoldat;
+				private JLabel InfoJoueur_nbSoldatContent;
+			private JLabel InfoJoueur_nbCavalier;
+				private JLabel InfoJoueur_nbCavalierContent;
+			private JLabel InfoJoueur_nbCanon;
+				private JLabel InfoJoueur_nbCanonContent;
+			private JLabel InfoJoueur_nbUnit;
+				private JLabel InfoJoueur_nbUnitContent;
+			private JLabel InfoJoueur_nbPays;
+				private JLabel InfoJoueur_nbPaysContent;
+			private JLabel InfoJoueur_nbContinent;
+				private JLabel InfoJoueur_nbContinentContent;
+			private JButton InfoJoueur_utilCartes;
+			private JButton InfoJoueur_finTour;
+			private JPanel InfoJoueur_couleurJoueur;
 		/* Le panel contenant les infos sur les bonus */
 		private JPanel panelInfoBonus;
 		/* Le panel contenant les actions possibles */
