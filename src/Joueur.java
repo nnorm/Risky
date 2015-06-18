@@ -124,6 +124,7 @@ public abstract class Joueur  {
 		for(int i =0; i<this.continent.size();i++){
 			this.ajouterArmeesDispo(this.continent.get(i).getBonusPion());
 		}
+		this.ajouterArmeesDispo(this.pays.size() /3);
 	}
 	
 	/**
