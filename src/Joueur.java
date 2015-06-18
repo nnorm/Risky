@@ -179,7 +179,7 @@ public abstract class Joueur  {
 			Continent continent2p= this.plateau.getContinent(i);
 			ArrayList<Pays> paysContinent= continent2p.getlistPays();
 			for(Pays p:paysContinent){
-				if(p.isVoisin(pays) && !p.getOwner().equals(this.pseudo) ){
+				if(p.isVoisin(pays) && p.getOwner().equals(this.pseudo) ){
 					paysvoisinAl.add(p);
 				}
 			}
