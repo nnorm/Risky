@@ -15,8 +15,12 @@ public class IA extends Joueur
 	 * Constructeur avec arguments.
 	 * @param nbArmeesInit le nombre d'armées disponible à l'initialisation du jeu. (int) 
 	 * */	
-	public IA(int nbArmeesInit)
+	public IA(int nbArmeesInit, int lvlDifficulte)
 	{
+		if(lvlDifficulte < 1 || lvlDifficulte > 2)
+		{
+			throw new IllegalArgumentException("Ce niveau de difficulté n'existe pas (1 ou 2)");
+		}
 		this.armeesDispo = nbArmeesInit;
 		this.pseudo = "Ordinateur " + IA.nbIA;
 		this.main = new LinkedList<Carte>();
@@ -25,7 +29,7 @@ public class IA extends Joueur
 		this.couleur = Humain.colorList[Humain.colorIndex];
 		this.idJ += 1;
 		this.score = 0;
-		
+		this.lvlDifficulte = lvlDifficulte;
 		Humain.colorIndex++;
 		IA.nbIA++;
 	}
