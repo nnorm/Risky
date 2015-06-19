@@ -15,7 +15,7 @@ public abstract class Joueur  {
 	protected LinkedList<Continent> continent;
 	protected LinkedList<Pays> pays;
 	public static int colorIndex = 0;
-	protected static Color colorList[] = {Color.blue, Color.cyan, Color.green, Color.magenta, Color.orange, Color.pink};
+	protected static Color[] colorList = {Color.blue, Color.cyan, Color.green, Color.magenta, Color.orange, Color.pink};
 	protected Plateau plateau;
 	protected int idP; 
 	protected int score;
@@ -30,6 +30,11 @@ public abstract class Joueur  {
 		p.ajouterPions(nbPions);
 		this.armeesDispo-=nbPions;
 		}
+	}
+	
+	public void piocherCarte()
+	{
+		this.main.add(this.plateau.piocherCarte());
 	}
 	
 	/**
