@@ -35,8 +35,23 @@ public class Interface extends JFrame implements ActionListener
 			private JPanel InfoJoueur_couleurJoueur;
 		/* Le panel contenant les infos sur les bonus */
 		private JPanel panelInfoBonus;
+			private JLabel InfoBonus_BonusLabel;
+			private JLabel InfoBonus_p1;
+				private JLabel InfoBonus_p1Content;
+			private JLabel InfoBonus_p2;
+				private JLabel InfoBonus_p2Content;
+			private JLabel InfoBonus_p3;
+				private JLabel InfoBonus_p3Content;
+			private JLabel InfoBonus_p4;
+				private JLabel InfoBonus_p4Content;
+			private JLabel InfoBonus_p5;
+				private JLabel InfoBonus_p5Content;
+			private JLabel InfoBonus_p6;
+				private JLabel InfoBonus_p6Content;
 		/* Le panel contenant les actions possibles */
 		private JPanel panelActions;
+			private JButton Actions_DepAttack;
+			private JButton Actions_PlaceUnits;
 		/* Le panel contenant les infos sur le pays sélectionné */
 		private JPanel panelSelectPays;
 			private JLabel SelectPays_labelPays;
@@ -77,7 +92,6 @@ public class Interface extends JFrame implements ActionListener
 			mainPanelLayout.setAlignOnBaseline(true);
 			this.mainPanel.setLayout(mainPanelLayout);
 			
-		
 		this.panelCarte = new JPanel();
 			this.panelCarte.setLayout(new FlowLayout());
 			this.panelCarte.setBackground(new Color(255,0,0));
