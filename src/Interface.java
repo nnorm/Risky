@@ -114,6 +114,7 @@ public class Interface extends JFrame implements ActionListener
 			this.mainPanel.setLayout(mainPanelLayout);
 			
 		this.panelCarte = new JPanel();
+			JLabel image = new JLabel( new ImageIcon( ""));
 			this.panelCarte.setLayout(new FlowLayout());
 			this.panelCarte.setBackground(new Color(255,0,0));
 			this.mainPanel.add(this.panelCarte);
