@@ -1,4 +1,6 @@
 import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.awt.*;
 
 
@@ -19,6 +21,7 @@ public abstract class Joueur  {
 	protected Plateau plateau;
 	protected int idP; 
 	protected int score;
+	protected Date date	= new Date();
 	
 	/**
 	 * Permet de distribuer les pions entre les pays du joueur.
@@ -32,6 +35,13 @@ public abstract class Joueur  {
 		}
 	}
 	
+	  public String getDate() {
+
+		    SimpleDateFormat sdfTime = new SimpleDateFormat("yyyy/MM/dd");
+		    String strTime = sdfTime.format(this.date);
+		    return strTime;
+	  }
+	  
 	public void piocherCarte()
 	{
 		this.main.add(this.plateau.piocherCarte());
@@ -247,7 +257,7 @@ public abstract class Joueur  {
 		String[] table2 = {"PARTIE"};
 		String id = "" + this.idP;
 		String nbArm = "" + uniteTotal();
-		String[] gagnant = {id,Gagnant(),null,nbArm};
+		String[] gagnant = {id,Gagnant(),getDate(),nbArm};
 		Database dataGagnant = new Database(champs2, table2,gagnant,"");
 		dataGagnant.requeteInsert();
 		
