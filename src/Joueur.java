@@ -234,7 +234,7 @@ public abstract class Joueur  {
 	
 	
 	
-	public void enregister()
+	public void enregistrer()
 	{
 		String[] champs = {"id_joueur","pseudo"};
 		String[] joueur = {idJoueur(), this.pseudo};

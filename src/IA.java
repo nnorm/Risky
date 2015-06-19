@@ -91,7 +91,7 @@ public class IA extends Joueur
 	public boolean paystouchePAutreContinent(Pays pays){
 		ArrayList<Pays> paysvoisin= new ArrayList<Pays> ();
 		boolean pC=false;
-		for(int i=0;i<5;i++){
+		for(int i=0;i<this.plateau.getContinentLength();i++){
 			Continent continent2p= this.plateau.getContinent(i);
 			ArrayList<Pays> paysContinent= continent2p.getlistPays();
 			for(Pays p:paysContinent){
@@ -251,6 +251,8 @@ public class IA extends Joueur
 			ArrayList<Pays> listPays = null;
 			int[] indices = this.paysParContinent();
 			int temp;
+			ArrayList<Pays> ordrePrioAttaque = new ArrayList<Pays>();
+			Pays p = null;
 			for(int i = 0; i < indices.length; i++)
 			{
 				listPays = this.plateau.getContinent(i).getlistPays();
@@ -259,11 +261,16 @@ public class IA extends Joueur
 				temp = temp/this.plateau.getContinent(i).getlistPays().size();
 				for(int j = 0; j < this.plateau.getContinent(i).getlistPays().size() && this.armeesDispo >= temp; j++)
 				{
-					this.distribuer(this.plateau.getContinent(i).getlistPays().get(j), temp);
+					p = this.plateau.getContinent(i).getlistPays().get(j);
+					this.distribuer(p, temp);
+					ordrePrioAttaque.add(p);
 				}
 			}
 			
-			
+			for(Pays pa:ordrePrioAttaque)
+			{
+				
+			}
 		}
 	}
 }
