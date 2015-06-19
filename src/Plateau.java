@@ -74,7 +74,7 @@ public class Plateau {
 	
 	/**
 	 * Méthode d'instance de type getter sur la constante length de l'attribut continent.
-	 * @param la taille du tableau this.continent. (int) 
+	 * @return la taille du tableau this.continent. (int) 
 	 * */
 	public int getContinentLength()
 	{

@@ -58,7 +58,7 @@ public class Continent {
 	
 	/**
 	 * Méthode d'instance type setter sur l'attribut nom.
-	 * @return nom le nom du continent. (String) 
+	 * @param nom le nom du continent. (String) 
 	 * */
 	public void setNom(String nom) {
 		this.nom = nom;

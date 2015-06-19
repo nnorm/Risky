@@ -36,7 +36,7 @@ public class IA extends Joueur
 	
 	/**
 	 * Méthode d'instance de type setteur sur l'attribut lvlDifficulte.
-	 * @param le niveau de difficulté de l'IA. (Int, 1 ou 2)
+	 * @param lvl le niveau de difficulté de l'IA. (Int, 1 ou 2)
 	 */
 	public void setlvlDiff(int lvl){
 		this.lvlDifficulte=lvl;
@@ -115,7 +115,7 @@ public class IA extends Joueur
 	
 	/**
 	 * Méthode d'instance qui renvoi le nombre de pays ennemi voisin d'un pays.
-	 * @param  le pays à traiter. (Pays)
+	 * @param pays pays le pays à traiter. (Pays)
 	 * @return le nombre de pays voisins. (int)
 	 */
 	public int PplusVoisinEnemy(Pays pays){
