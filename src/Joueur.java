@@ -171,8 +171,8 @@ public abstract class Joueur  {
 	
 	/**
 	 * methode qui renvoi le pays avec le plus d unite
-	 * @liste de pays
-	 * @return le pays avec le plus d armee
+	 * @param  la liste des pays à évaluer. (LinkedList<Pays)
+	 * @return le pays avec le plus d'armées. (Pays)
 	 */
 	public Pays paysPlusArme(LinkedList<Pays> pays2){
 		int pMax=pays2.get(0).getNbArmees();
@@ -188,7 +188,7 @@ public abstract class Joueur  {
 	/**
 	 * methode qui renvoi les pays voisins allier
 	 * @param pays
-	 * @return
+	 * @return la liste des pays voisins. (ArrayList<Pays>)
 	 */
 	public ArrayList<Pays> listePVoisinAll(Pays pays){
 		ArrayList<Pays> paysvoisinAl= new ArrayList<Pays> ();

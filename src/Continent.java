@@ -41,7 +41,7 @@ public class Continent {
 	}
 
 	/**
-	 * Methode d'instance type setter sur l'attribut bonusPion.
+	 * Méthode d'instance type setter sur l'attribut bonusPion.
 	 * @param bonusPion le bonus de pion accordé par le continent. (int) 
 	 * */
 	public void setBonusPion(int bonusPion) {
@@ -49,7 +49,7 @@ public class Continent {
 	}
 	
 	/**
-	 * Methode d'instance type getter sur l'attribut nom.
+	 * Méthode d'instance type getter sur l'attribut nom.
 	 * @return nom le nom du continent. (String) 
 	 * */
 	public String getNom() {
@@ -57,16 +57,16 @@ public class Continent {
 	}
 	
 	/**
-	 * Methode d'instance type setter sur l'attribut nom.
+	 * Méthode d'instance type setter sur l'attribut nom.
 	 * @return nom le nom du continent. (String) 
 	 * */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 	/**
-	 * methode d'insatnce qui renvoi si la personne as tout les pays du contient
-	 * @param liste pays
-	 * @return 
+	 * Méthode d'instance qui renvoi si la personne a tous les pays du contient
+	 * @param pays la liste des pays à évaluer. (ArrayList<Pays>)
+	 * @return vrai si les pays évaluer composent tout un continent, faux sinon. (boolean)
 	 */
 	public boolean appartient(ArrayList<Pays> pays){
 		boolean res=false;
@@ -84,8 +84,8 @@ public class Continent {
 	}
 	
 	/**
-	 * methode qui renvoi la liste de pays
-	 * @return
+	 * Méthode d'instance qui renvoi la liste de pays.
+	 * @return la liste des pays du continent. (ArrayList<Pays>)
 	 */
 	public ArrayList<Pays> getlistPays(){
 		return this.pays;

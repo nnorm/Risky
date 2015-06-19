@@ -6,13 +6,19 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * Classe qui définie les fonctions liées à l'interface graphique 
+ * Classe qui définie les fonctions liées à l'interface graphique.
  * */
 @SuppressWarnings("serial")
 public class Interface extends JFrame implements ActionListener
 {
 	/* Le panel principal */
 	private JPanel mainPanel;
+	/* Les sous-panels globaux */
+	private JPanel globalHPanel; /* Contient panelCarte et panelInfoJoueur */
+	private JPanel globalVPanel; /* Contient panelCarte, panelActions et panelSelectPays */
+	private JPanel globalBonusVPanel; /* Contient panelInfoJoueur et panelBonus */
+	private JPanel globalBonusHPanel; /* Contient panelSelectPays, panelActions et panelBonus */
+	
 		/* Le panel contenant la carte */
 		private JPanel panelCarte;
 		/* Le panel contenant les infos sur le joueur */
@@ -61,15 +67,23 @@ public class Interface extends JFrame implements ActionListener
 			private JLabel SelectPays_labelJoueur;
 				private JLabel SelectPays_labelJoueurContent;
 			private JLabel SelectPays_labelUnite;
-				private JLabel SelectPays_labelUniteContent;			
+				private JLabel SelectPays_labelUniteContent;
+			private JPanel SelectPays_colorPays;
 	
 	
+	/*---------------- labels des "placeholders" ----------------*/
 	private JLabel labelPlaceholderCarte;
 	private JLabel labelPlaceholderInfoJoueur;
 	private JLabel labelPlaceholderInfoBonus;
 	private JLabel labelPlaceholderActions;
 	private JLabel labelPlaceholderSelectPays;
 	
+	/**
+	 * Constructeur avec arguments.
+	 * @param title le titre de la fenêtre. (String)
+	 * @param width la largeur de la fenêtre. (int)
+	 * @param height la hauteur de la fenêtre. (int)
+	 * */
 	public Interface(String title, int width, int height)
 	{
 		super();
@@ -77,6 +91,13 @@ public class Interface extends JFrame implements ActionListener
 		build(title, width, height);
 	}
 	
+	/**
+	 * Méthode d'instance privée construisant le contenu de la fenêtre. 
+	 * Est appellée par le constructeur.
+	 * @param title le titre de la fenêtre. (String)
+	 * @param width la largeur de la fenêtre. (int)
+	 * @param height la hauteur de la fenêtre. (int) 
+	 * */
 	private void build(String title, int width, int height)
 	{
 		setTitle(title);
@@ -88,7 +109,7 @@ public class Interface extends JFrame implements ActionListener
 		
 		/*---------------- GUI ----------------*/
 		this.mainPanel = new JPanel();
-			FlowLayout mainPanelLayout = new FlowLayout(FlowLayout.LEADING);
+			FlowLayout mainPanelLayout = new FlowLayout();
 			mainPanelLayout.setAlignOnBaseline(true);
 			this.mainPanel.setLayout(mainPanelLayout);
 			
@@ -114,9 +135,10 @@ public class Interface extends JFrame implements ActionListener
 		
 		this.panelSelectPays = new JPanel();
 			this.panelSelectPays.setLayout(new FlowLayout());
-			this.panelSelectPays.setBackground(new Color(0,0,0));
+			this.panelSelectPays.setBackground(new Color(255,0,255));
 			this.mainPanel.add(this.panelSelectPays);
-			
+		
+		/*---------------- Mise en place de "placeholder" pour l'interface ----------------*/
 		labelPlaceholderCarte = new JLabel("Carte");
 		this.panelCarte.add(labelPlaceholderCarte);
 		
@@ -135,12 +157,34 @@ public class Interface extends JFrame implements ActionListener
 		setContentPane(mainPanel);
 	}
 	
+	/**
+	 * Méthode d'instance déclenchant des actions en fonction des boutons cliqués.
+	 * @param e instance d'ActionEvent permettant de savoir quel bouton à été cliqué. (ActionEvent) 
+	 * */
 	public void actionPerformed(ActionEvent e)
 	{
-			
+		Object source = e.getSource();
+		if(source == InfoJoueur_utilCartes)
+		{
+			/* appel les méthodes afin de traiter et utiliser les cartes du joueur courant */
+		}
+		else if(source == InfoJoueur_finTour)
+		{
+			/* appel les méthodes de fin de tour pour le joueur courant */
+		}
+		else if(source == Actions_DepAttack)
+		{
+			/* appel les méthodes de déplacement / attaque des unités du joueur courant */
+		}
+		else if(source == Actions_PlaceUnits)
+		{
+			/* appel les méthodes pour placer les unités disponibles du joueur courant */
+		}
 	}
 	
-	
+	/**
+	 * Méthode d'instance affichant la fenêtre. 
+	 * */
 	public void display()
 	{
 		setVisible(true);
