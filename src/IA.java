@@ -4,12 +4,12 @@ import java.util.*;
  * Classe fille de Joueur jouant le rôle d'IA. 
  * */
 public class IA extends Joueur
-{	/*	lvlDifficulte=1 ---> niveau (tres) facile
+{	
+	/*	lvlDifficulte=1 ---> niveau (tres) facile
 					 =2 ---> niveau moyen 
  	*/
 	private int lvlDifficulte;   
 	public static int nbIA = 0;
-	
 	
 	/**
 	 * Constructeur avec arguments.
@@ -35,8 +35,8 @@ public class IA extends Joueur
 	}
 	
 	/**
-	 * setteur du lvl de l ia
-	 * @param lvl
+	 * Méthode d'instance de type setteur sur l'attribut lvlDifficulte.
+	 * @param le niveau de difficulté de l'IA. (Int, 1 ou 2)
 	 */
 	public void setlvlDiff(int lvl){
 		this.lvlDifficulte=lvl;
@@ -88,9 +88,9 @@ public class IA extends Joueur
 	}
 	
 	/**
-	 * methode qui retourne si un pays a un autre p voisin mais n appartenant pas au mem continent
-	 * @param pays  p1
-	 * @return un boolean si un pays p1 a un voisin sur un autre continent
+	 * Méthode d'instance retournant si un pays a un autre pays voisin mais n'appartenant pas au même continent.
+	 * @param pays le pays à traiter. (Pays)
+	 * @return vrai si le pays à traiter a un voisin n'appartenant pas au même continent, faux sinon. (boolean)
 	 */
 	public boolean paystouchePAutreContinent(Pays pays){
 		ArrayList<Pays> paysvoisin= new ArrayList<Pays> ();
@@ -114,20 +114,21 @@ public class IA extends Joueur
 	}
 	
 	/**
-	 * methode qui renvoi le nb de pays enemi voisin d'un pays
+	 * Méthode d'instance qui renvoi le nombre de pays ennemi voisin d'un pays.
+	 * @param  le pays à traiter. (Pays)
+	 * @return le nombre de pays voisins. (int)
 	 */
 	public int PplusVoisinEnemy(Pays pays){
 		return this.paysvoisinAtt(pays).size();
 		
 	}
 	/**
-	 * methode qui distribue les armees en fonction du lvl
+	 * Méthode d'instance qui distribue les armées en fonction du niveau de difficulté de l'IA.
 	 */
 	public void jouerDeb(){
 		this.mettre1ArmePays(this.pays);
 		Random rwm =new Random();
 		if(this.lvlDifficulte==1){      // distribution 1 unite au premier pays lvl 1
-		
 			while(this.armeesDispo !=0){
 				int i=rwm.nextInt(this.pays.size());
 				for(  ;i<=this.pays.size();i++){ 
@@ -153,7 +154,8 @@ public class IA extends Joueur
 	}
 	
 	/**
-	 * retourn le nb arme dispo par le bonus
+	 * Méthode d'instance retournant le nombre de pion récupéré par le bonus des cartes.
+	 * @return le nombre de pions à récupérer grâces aux cartes bonus. (int)
 	 */
 	public int BonusCarte(){
 		int posCart1Max=0;
@@ -192,8 +194,7 @@ public class IA extends Joueur
 	
 	
 	/**
-	 *  joue un tour en fonction de lvl
-	 *  
+	 * Méthode d'instance faisant jouer un tour à l'IA en fonction du niveau de difficulté.
 	 */
 	public void unTour(){
 		Random rmd =new Random();
@@ -215,14 +216,12 @@ public class IA extends Joueur
 					this.armeesDispo=this.armeesDispo-1;
 				}
 			}
-			
 			if(paysCopy.size()!=0){
 				while(paysvoisinAtt1.size()==0 || this.pays.get(numPaysAtt1).getNbArmees()==1){ //cherche a voir des pays attaquable
 					numPaysAtt1 = rmd.nextInt(this.pays.size())+1;
 					paysvoisinAtt1=this.paysvoisinAtt(this.pays.get(numPaysAtt1));
 					paysCopy.remove(numPaysAtt1);
 				}
-
 				Pays paysdef1 =paysvoisinAtt1.get(rmd.nextInt(paysvoisinAtt1.size()+1));
 				Pays paysAt1 =this.pays.get(numPaysAtt1); 
 				// condition
@@ -294,10 +293,8 @@ public class IA extends Joueur
 						}
 					}
 				}
-				
 				Pays paysmax=this.paysPlusArme(this.pays);
 				paysmax.deplacerPions(this.listePVoisinAll(paysmax).get(0) ,(paysmax.getNbArmees()/2));
-			
 			}
 		}
 	}

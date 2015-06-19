@@ -1,6 +1,6 @@
 import java.util.*;
 /** 
- * Classe permettan l'utilisation du concept de plateau de jeu.
+ * Classe permettant l'utilisation du concept de plateau de jeu.
  * */
 public class Plateau {
 	
@@ -61,12 +61,21 @@ public class Plateau {
 	}
 	
 	/**
-	 * retourn le continent 
+	 * Méthode d'instance de type getter sur l'attribut continent à l'indice donnée.
+	 * @param  i l'indice du tableau où trouver le continent voulu. (int)
+	 * @return le continent à l'indice indiqué. (Continent) 
 	 */
-	public Continent getContinent(int i){
+	public Continent getContinent(int i) throws IllegalArgumentException
+	{
+		if(i > this.continent.length-1 || i < 0)
+			throw new IllegalArgumentException("Indice invalide!");
 		return this.continent[i];
 	}
 	
+	/**
+	 * Méthode d'instance de type getter sur la constante length de l'attribut continent.
+	 * @param la taille du tableau this.continent. (int) 
+	 * */
 	public int getContinentLength()
 	{
 		return this.continent.length;

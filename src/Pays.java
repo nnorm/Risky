@@ -77,17 +77,26 @@ public class Pays implements Comparable{
 	}
 	
 	/**
-	 * Accesseur sur nbArmees
-	 * @return le nombre d'armées actuel du pays
+	 * Méthode d'instance de type getter sur l'attribut nbArmees.
+	 * @return le nombre d'armées du pays. (int)
 	 */
 	public int getNbArmees()
 	{
 		return this.nbArmees;
 	}
 	
+	/**
+	 * Méthode d'instance de type getter sur l'attribut continent.
+	 * @return le continent auquel appartient le pays. (Continent)
+	 * */
 	public Continent getContinent(){
 		return this.continent;
 	}
+
+	/**
+	 * Méthode d'instance de type getter sur l'attribut numPays.
+	 * @return le numéro du pays. (int)
+	 */	
 	public int getNumPays()
 	{
 		return this.numPays;

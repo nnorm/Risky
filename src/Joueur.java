@@ -114,8 +114,8 @@ public abstract class Joueur  {
 	}
 	
 	/**
-	 * ajoute 1 unite sur tout les pays du joueur et enleve 1 unite a l'armee dispo
-	 * @param pays
+	 * Ajoute 1'unite sur tout les pays du joueur et enlève 1'unité a l'armée disponible.
+	 * @param pays les pays du joueur. (LinkedList<Pays>)
 	 */
 	public void mettre1ArmePays(LinkedList<Pays> pays){
 		for(Pays p : pays){
@@ -125,8 +125,8 @@ public abstract class Joueur  {
 	}
 	
 	/**
-	 * ajout un continent a un joueur
-	 * @param c
+	 * Ajoute un continent à un joueur.
+	 * @param c le continent à ajouter au joueur. (Continent)
 	 */
 	public void ajoutContinent(Continent c){
 		this.continent.add(c);
@@ -134,7 +134,7 @@ public abstract class Joueur  {
 	}
 	
 	/**
-	 * ajoute le nb de bonus d'un continent
+	 * Ajoute le nombre d'unités grâce au bonus d'un continent.
 	 */
 	public void ajNbUniteContinent(){
 		for(int i =0; i<this.continent.size();i++){
@@ -144,7 +144,7 @@ public abstract class Joueur  {
 	}
 	
 	/**
-	 * Affecte un plateau de jeu à ce joueur. Ne doit être utilisé que par le constructeur de Plateau
+	 * Méthode d'instance de type setter sur l'attribut plateau. Ne doit être utilisé que par le constructeur de Plateau.
 	 */
 	public void setPlateau(Plateau p)
 	{
@@ -152,7 +152,9 @@ public abstract class Joueur  {
 	}
 	
 	/**
-	 * methode liste de pays attaquable
+	 * Méthode d'instance listant les pays attaquables autour du pays indiqué.
+	 * @param pays le pays à traiter. (Pays)
+	 * @return la liste des pays attaquables. (ArrayList<Pays>)
 	 */
 	public ArrayList<Pays> paysvoisinAtt(Pays pays){
 		ArrayList<Pays> paysvoisinAtt=new ArrayList<Pays> ();
@@ -170,8 +172,8 @@ public abstract class Joueur  {
 	}
 	
 	/**
-	 * methode qui renvoi le pays avec le plus d unite
-	 * @param  la liste des pays à évaluer. (LinkedList<Pays)
+	 * Méthode qui renvoi le pays avec le plus d'unités.
+	 * @param  pays2 la liste des pays à évaluer. (LinkedList<Pays)
 	 * @return le pays avec le plus d'armées. (Pays)
 	 */
 	public Pays paysPlusArme(LinkedList<Pays> pays2){
@@ -186,9 +188,9 @@ public abstract class Joueur  {
 	}
 	
 	/**
-	 * methode qui renvoi les pays voisins allier
-	 * @param pays
-	 * @return la liste des pays voisins. (ArrayList<Pays>)
+	 * Méthode qui renvoi les pays voisins alliés.
+	 * @param pays le pays à traiter. (Pays)
+	 * @return la liste des pays voisins alliés. (ArrayList<Pays>)
 	 */
 	public ArrayList<Pays> listePVoisinAll(Pays pays){
 		ArrayList<Pays> paysvoisinAl= new ArrayList<Pays> ();
@@ -204,6 +206,10 @@ public abstract class Joueur  {
 		return paysvoisinAl;
 	}
 	
+	/**
+	 * Méthode d'instance permettant d'obtenir l'id du joueur.
+	 * @return l'id du joueur. (String)
+	 * */
 	public String idJoueur()
 	{
 		String res= "";
@@ -219,6 +225,11 @@ public abstract class Joueur  {
 		return res;
 		
 	}
+	
+	/**
+	 * Méthode d'instance retournant l'id du joueur gagnant.
+	 * @return joueur gagnant. (String) 
+	 * */
 	public String Gagnant()
 	{
 		String res= "";
@@ -229,6 +240,10 @@ public abstract class Joueur  {
 		return res;
 	}
 	
+	/**
+	 * Méthode retournant le nombre total d'unités à travers tous les pays.
+	 * @return le nombre d'unités de tous les pays. (int) 
+	 * */
 	public int uniteTotal()
 	{
 		int unite = 0;
@@ -238,11 +253,20 @@ public abstract class Joueur  {
 		return unite;
 	}
 	
+	/**
+	 * Méthode mettant à jour le score grâce à un combat.
+	 * @param pays pays attaquant. (Pays)
+	 * @param pays2 pays defenseur. (Pays)
+	 * @param nbPionsAtk nombre de pions attaquant. (int)
+	 * */
 	public void mettreAJourScore(Pays pays, Pays pays2, int nbPionsAtk){
 		Combat t = new Combat(pays, pays2, nbPionsAtk);
 		this.score += t.getScoreC();
 	}
 	
+	/**
+	 * Méthode permettant d'enregistrer le joueur dans la base de données.
+	 * */
 	public void enregistrerJoueur()
 	{
 		String[] champs = {"id_joueur","pseudo"};
@@ -252,7 +276,9 @@ public abstract class Joueur  {
 		dataJoueur.requeteInsert();
 	}
 	
-	
+	/**
+	 * Méthode permettant d'enregistrer la partie dans la base de données.
+	 * */	
 	public void enregistrerPartie()
 	{
 		
@@ -274,10 +300,11 @@ public abstract class Joueur  {
 	
 	}
 	
+	/**
+	 * Méthode permettant de supprimer le joueur de la base de données.
+	 * */
 	public void supprimer(String[] table, String condition){
 		Database bd = new Database(null,table,null,condition);
 		bd.requeteDelete();
 	}
-	
-	
 }

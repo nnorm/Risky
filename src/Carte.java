@@ -6,7 +6,7 @@ public class Carte{
 	private TypeCarte type;
 	
 	/**
-	 * Consutrcteur avec argument.
+	 * Constructeur avec argument.
 	 * @param type le type de la carte à instancier. (TypeCarte) 
 	 * */
 	public Carte(TypeCarte type)

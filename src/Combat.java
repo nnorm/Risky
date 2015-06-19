@@ -100,14 +100,26 @@ public class Combat {
 		return res;
 	}
 	
+	/**
+	 * Méthode d'instance de type getter sur l'attribut paysAtt.
+	 * @return le pays attaquant. (Pays) 
+	 * */
 	public Pays getAtt(){
 		return this.paysAtt;
 	}
-	
+
+	/**
+	 * Méthode d'instance de type getter sur l'attribut paysDef.
+	 * @return le pays défenseur. (Pays) 
+	 * */	
 	public Pays getDef(){
 		return this.paysDef;
 	}
-	
+
+	/**
+	 * Méthode d'instance de type getter sur l'attribut scoreCombat.
+	 * @return le score du combat. (Pays) 
+	 * */	
 	public int getScoreC(){
 		return this.scoreCombat;
 	}
