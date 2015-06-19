@@ -16,11 +16,12 @@ public class Combat {
 	 * */
 	public Combat(Pays attaquant, Pays defenseur, int nbPionsAtk)
 	{	
+		if(nbPionsAtk <1 || attaquant.getNbArmees() < 2 || defenseur.getNbArmees() < 1)
+			throw new IllegalArgumentException("requête impossible");
+		
 		this.paysAtt=attaquant;
 		this.paysDef=defenseur;
 		
-		if(nbPionsAtk <1 || attaquant.getNbArmees() < 2 || defenseur.getNbArmees() < 1)
-			throw new IllegalArgumentException("requête impossible");
 		
 		if(defenseur.getNbArmees() > 1 ) this.nbDesDefense = 2;
 		else this.nbDesDefense = 1;
@@ -33,7 +34,7 @@ public class Combat {
 	 * methode tri a bulle
 	 * @param t
 	 */
-	private static void tribulles(int t[])
+	private static void tribulles(int[] t)
      {
 		for (int i=0 ;i<=(t.length-2);i++)
 			for (int j=(t.length-1);i < j;j--)
@@ -46,14 +47,17 @@ public class Combat {
      } 
    
 	/** 
-	 * Méthode d'instance trouvant l'issue du combat.
-	 * return true si il a gagner
+	 * Méthode d'instance faisant se dérouler un combat entre deux pays
+	 * Retire à chaque pays les pions perdus
+	 * @return true si le pays défenseur a été perdu à l'issue du combat
 	 * */
 	public boolean effectuerCombat()
 	{
 		int defDep = this.nbDesDefense;
 		Random rnd = new Random();
 		boolean res=false;
+		
+		this.paysAtt.enleverPions(this.nbDesAttaque);
 		
 		int resultatNbDef=this.paysDef.getNbArmees();//troupe qui reste sur territoire
 		int resultatNbAtt=this.nbDesAttaque;//troupe encore en vie apres combat

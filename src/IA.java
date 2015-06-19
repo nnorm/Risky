@@ -224,17 +224,14 @@ public class IA extends Joueur
 				// condition
 				if(paysAt1.getNbArmees()>3){
 					 nbArmAt1=3;
-					paysAt1.enleverPions(nbArmAt1);
 				}
 				if(paysAt1.getNbArmees()==3){
 					 nbArmAt1=2;
-					paysAt1.enleverPions(nbArmAt1);
 				}
 				if(paysAt1.getNbArmees()==2){
 					 nbArmAt1=1;
-					paysAt1.enleverPions(nbArmAt1);
 				}
-				for(int cpt =0;cpt<2 && vic==false;cpt++){ // combat
+				for(int cpt =0;cpt<2 && !vic;cpt++){ // combat
 					Combat cb1 =new Combat(paysAt1,paysdef1,nbArmAt1);
 					if(cb1.effectuerCombat()){ 
 						vic=true;
@@ -243,7 +240,7 @@ public class IA extends Joueur
 				}
 			}
 			Pays paysmax=this.paysPlusArme(this.pays);
-			paysmax.deplacerPions(this.paysvoisinAtt(paysmax).get(0) ,(paysmax.getNbArmees()/2));
+			paysmax.deplacerPions(this.listePVoisinAll(paysmax).get(0) ,(paysmax.getNbArmees()/2));
 		}
 		if(this.lvlDifficulte==2){
 			this.ajNbUniteContinent();
@@ -266,10 +263,37 @@ public class IA extends Joueur
 					ordrePrioAttaque.add(p);
 				}
 			}
-			
+			int nbArmAt1= -1;
 			for(Pays pa:ordrePrioAttaque)
 			{
+				if(pa.getNbArmees() > 1)
+				{
+					listPays = this.paysvoisinAtt(pa);
+					Collections.sort(listPays);
+					Collections.reverse(listPays);
 				
+					if(pa.getNbArmees()>3){
+						nbArmAt1=3;
+					}
+					if(pa.getNbArmees()==3){
+						nbArmAt1=2;
+					}
+					if(pa.getNbArmees()==2){
+						nbArmAt1=1;
+					}
+					boolean vic = false;
+					for(int cpt =0;cpt<2 && !vic; cpt++){ // combat
+						Combat cb1 =new Combat(pa, listPays.get(1),nbArmAt1);
+						if(cb1.effectuerCombat()){ 
+							vic=true;
+							this.main.add(this.plateau.piocherCarte());
+						}
+					}
+				}
+				
+				Pays paysmax=this.paysPlusArme(this.pays);
+				paysmax.deplacerPions(this.listePVoisinAll(paysmax).get(0) ,(paysmax.getNbArmees()/2));
+			
 			}
 		}
 	}

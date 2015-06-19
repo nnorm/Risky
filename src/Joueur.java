@@ -89,6 +89,7 @@ public abstract class Joueur  {
 	 */
 	public void perdrePays(Pays p)
 	{
+		p.enleverPions(p.getNbArmees());
 		this.pays.remove(p);
 	}
 	
