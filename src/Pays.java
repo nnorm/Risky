@@ -7,7 +7,6 @@ public class Pays implements Comparable{
 	private int nbArmees;
 	private Continent continent;
 	private Joueur owner;
-	private Pays[] frontaliers;
 	
 	public int compareTo(Object o)
 	{

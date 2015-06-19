@@ -243,15 +243,18 @@ public abstract class Joueur  {
 		this.score += t.getScoreC();
 	}
 	
-	
-	
-	public void enregistrer()
+	public void enregistrerJoueur()
 	{
 		String[] champs = {"id_joueur","pseudo"};
 		String[] joueur = {idJoueur(), this.pseudo};
 		String[] table = {"JOUEUR"};
 		Database dataJoueur = new Database(champs, table,joueur,"");
 		dataJoueur.requeteInsert();
+	}
+	
+	
+	public void enregistrerPartie()
+	{
 		
 		String[] champs2 = {"id_partie","id_gagnant","datepartie","nbarmees"};
 		String[] table2 = {"PARTIE"};
