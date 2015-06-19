@@ -6,12 +6,13 @@ public class main {
  
 	public static void main(String[] argv) {
 
-	/*	String[] champs = {"id_joueur","id_partie", "couleur", "score"};
-		String[] table = {"PARTICIPER"};
-		String[] val = {"J001","P001","blue", "3000"};
+	    /*String[] champs = {"id_joueur", "pseudo"};
+		String[] table = {"JOUEUR"};
+		String[] val = {"J001", "test"};
 		Database bd = new Database(champs,table,val,"");
-		bd.requeteInsert(); /* LANCE UNE EXCEPTION 
-		bd.requeteSlt(false);  */
+		bd.requeteInsert() 
+		FONCTIONNE FAIRE ATTENTION A LA CONTRAINTE D'INTEGRITER
+		bd.requeteSlt(false);*/
 		/* Tests de l'interface */
 		Interface ihm = new Interface("Risky", 800, 600);
 		ihm.display();
