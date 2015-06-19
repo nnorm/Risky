@@ -95,10 +95,9 @@ public class PaysAdjacents {
         PaysAdjacents.pays[40][41] = true;
 
         //finis de remplir les cases de manière à avoir une symétrie sur les adjacences
-        for (int i = 0; i < 42 ; i++){
-            for(int j = 0; j < 42; j++){
-                if(PaysAdjacents.pays[i][j] == true){PaysAdjacents.pays[j][i] = true;}
-            }
-        }
+        for (int i = 0; i < 42 ; i++)
+            for(int j = 0; j < 42; j++)
+                if(PaysAdjacents.pays[i][j] == true)
+                	PaysAdjacents.pays[j][i] = true;
     }
 }

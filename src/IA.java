@@ -18,9 +18,8 @@ public class IA extends Joueur
 	public IA(int nbArmeesInit, int lvlDifficulte)
 	{
 		if(lvlDifficulte < 1 || lvlDifficulte > 2)
-		{
 			throw new IllegalArgumentException("Ce niveau de difficulté n'existe pas (1 ou 2)");
-		}
+		
 		this.armeesDispo = nbArmeesInit;
 		this.pseudo = "Ordinateur " + IA.nbIA;
 		this.main = new LinkedList<Carte>();
@@ -48,20 +47,13 @@ public class IA extends Joueur
 	 */
 	public int[] paysParContinent()
 	{
-		
 		int[] paysParContinent = new int[this.plateau.getContinentLength()];
 		int[] indicesContinents = new int[this.plateau.getContinentLength()];
 		for(int i = 0; i < indicesContinents.length; i++) indicesContinents[i] = i;
 		for(int i = 0; i < paysParContinent.length; i++)
-		{
 			for(int j = 0; i < this.plateau.getContinent(i).getlistPays().size(); j++)
-			{
 				if(this.plateau.getContinent(i).getlistPays().get(j).getOwner().equals(this))
-				{
 					paysParContinent[i] ++;
-				}
-			}
-		}
 		int max = -1;
 		int indMax = -1;
 		int temp = -1;
@@ -70,13 +62,11 @@ public class IA extends Joueur
 			max = -1;
 			indMax = -1;
 			for(int j = i; j < paysParContinent.length; j++)
-			{
 				if(paysParContinent[j] > max)
-					{
+				{
 					max = paysParContinent[j];
 					indMax = j;
-					}
-			}
+				}
 			temp = paysParContinent[indMax];
 			paysParContinent[indMax] = paysParContinent[i];
 			paysParContinent[i] = temp;
@@ -98,17 +88,14 @@ public class IA extends Joueur
 		for(int i=0;i<this.plateau.getContinentLength();i++){
 			Continent continent2p= this.plateau.getContinent(i);
 			ArrayList<Pays> paysContinent= continent2p.getlistPays();
-			for(Pays p:paysContinent){
-				if(p.isVoisin(pays)){
+			for(Pays p:paysContinent)
+				if(p.isVoisin(pays))
 					paysvoisin.add(p);
-				}
-			}
 		}
 	
 		for(Pays p :paysvoisin  ){
-			if(p.getContinent().equals(pays.getContinent())){
+			if(p.getContinent().equals(pays.getContinent()))
 				pC=true;
-			}
 		}
 		return pC;
 	}
@@ -120,7 +107,6 @@ public class IA extends Joueur
 	 */
 	public int PplusVoisinEnemy(Pays pays){
 		return this.paysvoisinAtt(pays).size();
-		
 	}
 	/**
 	 * Méthode d'instance qui distribue les armées en fonction du niveau de difficulté de l'IA.
@@ -128,7 +114,7 @@ public class IA extends Joueur
 	public void jouerDeb(){
 		this.mettre1ArmePays(this.pays);
 		Random rwm =new Random();
-		if(this.lvlDifficulte==1){      // distribution 1 unite au premier pays lvl 1
+		if(this.lvlDifficulte==1)      // distribution 1 unite au premier pays lvl 1
 			while(this.armeesDispo !=0){
 				int i=rwm.nextInt(this.pays.size());
 				for(  ;i<=this.pays.size();i++){ 
@@ -136,7 +122,6 @@ public class IA extends Joueur
 					this.armeesDispo=this.armeesDispo-1;
 				}
 			}
-		}
 		
 		if(this.lvlDifficulte==2){ // distribution point strategique lvl 2
 			int[] indicesContinents = this.paysParContinent();
@@ -146,9 +131,7 @@ public class IA extends Joueur
 				temp = this.armeesDispo/2;
 				temp = temp/this.plateau.getContinent(i).getlistPays().size();
 				for(int j = 0; j < this.plateau.getContinent(i).getlistPays().size() && this.armeesDispo >= temp; j++)
-				{
 					this.distribuer(this.plateau.getContinent(i).getlistPays().get(j), temp);
-				}
 			}
 		}
 	}
@@ -163,30 +146,25 @@ public class IA extends Joueur
 		int posCart3Max=0;
 		int nbMax=0;
 		while(this.main.size()>=3){
-			for(int i =0;i<=this.main.size();i++){  
-				for(int j=0;j<=this.main.size();j++){
-					for(int p=0;p<=this.main.size();i++){
-						if(this.combinaison(this.main.get(i), this.main.get(j),this.main.get(p)) !=0){
+			for(int i =0;i<=this.main.size();i++)
+				for(int j=0;j<=this.main.size();j++)
+					for(int p=0;p<=this.main.size();i++)
+						if(this.combinaison(this.main.get(i), this.main.get(j),this.main.get(p)) !=0)
 							if(nbMax<this.combinaison(this.main.get(i), this.main.get(j),this.main.get(p))){
 								posCart1Max=i;
 								posCart2Max=j;
 								posCart3Max=p;
 								nbMax=this.combinaison(this.main.get(i), this.main.get(j),this.main.get(p));
 							}
-						}
-					}
-				}
-				
-			}
 			if(nbMax > 0)
 			{
-			this.plateau.mettreDsPaquet(this.main.get(posCart1Max));
-			this.plateau.mettreDsPaquet(this.main.get(posCart2Max));
-			this.plateau.mettreDsPaquet(this.main.get(posCart3Max));
-			this.main.remove(posCart1Max);
-			this.main.remove(posCart2Max);
-			this.main.remove(posCart3Max);
-			this.ajouterArmeesDispo(nbMax);
+				this.plateau.mettreDsPaquet(this.main.get(posCart1Max));
+				this.plateau.mettreDsPaquet(this.main.get(posCart2Max));
+				this.plateau.mettreDsPaquet(this.main.get(posCart3Max));
+				this.main.remove(posCart1Max);
+				this.main.remove(posCart2Max);
+				this.main.remove(posCart3Max);
+				this.ajouterArmeesDispo(nbMax);
 			}
 		}
 		return nbMax;
@@ -199,7 +177,6 @@ public class IA extends Joueur
 	public void unTour(){
 		Random rmd =new Random();
 		if(this.lvlDifficulte==1){ // level 1 fini 
-			
 			int numPaysAtt1 = rmd.nextInt(this.pays.size())+1;
 			ArrayList<Pays> paysvoisinAtt1=this.paysvoisinAtt(this.pays.get(numPaysAtt1));
 			ArrayList<Pays> paysCopy=this.paysvoisinAtt(this.pays.get(numPaysAtt1));
@@ -210,8 +187,7 @@ public class IA extends Joueur
 			this.ajNbUniteContinent();
 			this.BonusCarte();
 			while(this.armeesDispo !=0){
-				int i=0;
-				for(  ;i<=this.pays.size();i++){ 
+				for(int i=0;i<=this.pays.size();i++){ 
 					this.pays.get(i).ajouterPions(1);
 					this.armeesDispo=this.armeesDispo-1;
 				}
@@ -225,15 +201,12 @@ public class IA extends Joueur
 				Pays paysdef1 =paysvoisinAtt1.get(rmd.nextInt(paysvoisinAtt1.size()+1));
 				Pays paysAt1 =this.pays.get(numPaysAtt1); 
 				// condition
-				if(paysAt1.getNbArmees()>3){
+				if(paysAt1.getNbArmees()>3)
 					 nbArmAt1=3;
-				}
-				if(paysAt1.getNbArmees()==3){
+				if(paysAt1.getNbArmees()==3)
 					 nbArmAt1=2;
-				}
-				if(paysAt1.getNbArmees()==2){
+				if(paysAt1.getNbArmees()==2)
 					 nbArmAt1=1;
-				}
 				for(int cpt =0;cpt<2 && !vic;cpt++){ // combat
 					Combat cb1 =new Combat(paysAt1,paysdef1,nbArmAt1);
 					if(cb1.effectuerCombat()){ 

@@ -63,6 +63,7 @@ public class Continent {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
 	/**
 	 * Méthode d'instance qui renvoi si la personne a tous les pays du contient
 	 * @param pays la liste des pays à évaluer. (ArrayList<Pays>)
@@ -74,12 +75,12 @@ public class Continent {
 		int nbPaysDansContinent = this.pays.size();
 		int PaysDedant=0;
 		while(i<pays.size()){
-			if(this.pays.contains(pays.get(i))){
+			if(this.pays.contains(pays.get(i)))
 				PaysDedant++;
-			}
 			i++;
 		}
-		if(PaysDedant==nbPaysDansContinent)res=true;
+		if(PaysDedant==nbPaysDansContinent)
+			res=true;
 		return res;
 	}
 	

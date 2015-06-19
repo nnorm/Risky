@@ -19,8 +19,5 @@ public class Humain extends Joueur{
 		Humain.colorIndex++;
 		this.idJ += 1 ;
 		this.score = 0;
-		
-
-		
 	}
 }

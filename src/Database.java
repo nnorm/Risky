@@ -36,14 +36,17 @@ public class Database {
 		String ch = "";
 		String tab = "";
 		String conca = "";
-		for(int i = 0; i<= this.champs.length-2; i++){
+		
+		for(int i = 0; i<= this.champs.length-2; i++)
 			ch += this.champs[i] + ", "; 
-		}
+		
 		ch += this.champs[this.champs.length-1];
-		for(int i = 0; i<= this.table.length-2; i++){
+		
+		for(int i = 0; i<= this.table.length-2; i++)
 			tab += this.table[i] + ", "; 
-		}
+		
 		tab += this.table[this.table.length-1];
+		
 		try { 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
@@ -66,9 +69,9 @@ public class Database {
 			
 			while(vRs.next())
 			{	
-				for(int i = 0; i < this.champs.length; i++){
+				for(int i = 0; i < this.champs.length; i++)
 					res += vRs.getString(this.champs[i]) + " ";
-				}
+
 				System.out.println(res);
 				this.resultat.add(res);
 				res = "";
@@ -89,27 +92,27 @@ public class Database {
 		String val = "";
 		String conca = "";
 		String tab = "";
-		for(int i = 0; i<= this.champs.length-2; i++){
+		for(int i = 0; i<= this.champs.length-2; i++)
 			ch += this.champs[i] + ", "; 
-		}
+
 		ch += this.champs[this.champs.length-1];
 		
-		for(int i = 0; i<= this.valeur.length-2; i++){
+		for(int i = 0; i<= this.valeur.length-2; i++)
 			try{
 				val += "" + Integer.parseInt(this.valeur[i]) + ", "; 
 			}catch(Exception e){
 				val += "'" + this.valeur[i] + "'" + ", "; 
 			}
-		}
+
 		try{
 			val += "" + Integer.parseInt(this.valeur[this.valeur.length-1]);
 		}catch(Exception e){
 			val += "'" + this.valeur[this.valeur.length-1] + "'";
 		}
 	
-		for(int i = 0; i<= this.table.length-2; i++){
+		for(int i = 0; i<= this.table.length-2; i++)
 			tab += this.table[i] + ", "; 
-		}
+
 		tab += this.table[this.table.length-1];
 		try { 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -138,10 +141,11 @@ public class Database {
 		String tab = "";
 		String conca = "";
 
-		for(int i = 0; i<= this.table.length-2; i++){
+		for(int i = 0; i<= this.table.length-2; i++)
 			tab += this.table[i] + ", "; 
-		}
+
 		tab += this.table[this.table.length-1];
+		
 		try { 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {

@@ -19,20 +19,15 @@ public class Plateau {
 		this.longueur=longueur;
 		this.carte = new LinkedList<Carte>();
 		for( int i=0; i<42; i++){ // créer les 42 cartes
-			if(i>14){
+			if(i>14)
 				this.carte.add(new Carte(TypeCarte.Soldat));
-			}
-			if(i<=14 && i<28){
+			if(i<=14 && i<28)
 				this.carte.add(new Carte(TypeCarte.Cavalier));
-			}
-			if(i>=28){
+			if(i>=28)
 				this.carte.add(new Carte(TypeCarte.Canon));
-			}
 		}
 		for(Joueur j:this.joueurs)
-		{
 			j.setPlateau(this);
-		}
 	}
 	
 	/**
@@ -47,8 +42,7 @@ public class Plateau {
 	 * @return la carte piochée. (Carte) 
 	 * */
 	public Carte piocherCarte() {
-		Carte c =this.carte.removeFirst();
-		return c;
+		return this.carte.removeFirst();
 	}
 	
 	/**

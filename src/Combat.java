@@ -14,7 +14,7 @@ public class Combat {
 	 * @param defenseur le pays défenseur. (Pays)
 	 * @param nbPionsAtk le nombre de pions attaquant. (int)
 	 * */
-	public Combat(Pays attaquant, Pays defenseur, int nbPionsAtk)
+	public Combat(Pays attaquant, Pays defenseur, int nbPionsAtk) throws IllegalArgumentException
 	{	
 		if(nbPionsAtk <1 || attaquant.getNbArmees() < 2 || defenseur.getNbArmees() < 1)
 			throw new IllegalArgumentException("requête impossible");
@@ -22,12 +22,15 @@ public class Combat {
 		this.paysAtt=attaquant;
 		this.paysDef=defenseur;
 		
+		if(defenseur.getNbArmees() > 1 ) 
+			this.nbDesDefense = 2;
+		else 
+			this.nbDesDefense = 1;
 		
-		if(defenseur.getNbArmees() > 1 ) this.nbDesDefense = 2;
-		else this.nbDesDefense = 1;
-		
-		if(nbPionsAtk < 3) this.nbDesAttaque = nbPionsAtk;
-		else this.nbDesAttaque = 3;
+		if(nbPionsAtk < 3) 
+			this.nbDesAttaque = nbPionsAtk;
+		else 
+			this.nbDesAttaque = 3;
 		
 	}
 	/**
@@ -65,26 +68,22 @@ public class Combat {
 		int[] tabDef =new int[this.nbDesDefense];
 	
 		//génération des résultats du jeté de dés des attaquants
-		for(int i=0;i<=tabAt.length;i++){
+		for(int i=0;i<=tabAt.length;i++)
 			tabAt[i]=rnd.nextInt(6)+1;
-		}
 		
 		//génération des résultats du jeté de dés des défenseurs
-		for(int j=0;j<=tabDef.length;j++){
+		for(int j=0;j<=tabDef.length;j++)
 			tabDef[j]=rnd.nextInt(6)+1;
-		}
 		
 		//triage des dés
 		tribulles(tabDef);
 		tribulles(tabAt);
 		
-		for(int k=0;k<=tabDef.length && resultatNbDef==0 && resultatNbAtt==0 ;k++){
-			if(tabDef[k]>=tabAt[k]){
+		for(int k=0;k<=tabDef.length && resultatNbDef==0 && resultatNbAtt==0 ;k++)
+			if(tabDef[k]>=tabAt[k])
 				resultatNbAtt=resultatNbAtt-1;
-				
-			}
-			else resultatNbDef=resultatNbDef-1;
-		}
+			else 
+				resultatNbDef=resultatNbDef-1;
 		
 		if(resultatNbDef==0){
 			this.paysDef.setOwner(this.paysAtt.getOwner());

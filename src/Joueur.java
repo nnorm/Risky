@@ -30,16 +30,15 @@ public abstract class Joueur  {
 	 * */
 	public void distribuer(Pays p,int nbPions){
 		if(this.armeesDispo>nbPions){
-		p.ajouterPions(nbPions);
-		this.armeesDispo-=nbPions;
+			p.ajouterPions(nbPions);
+			this.armeesDispo-=nbPions;
 		}
 	}
 	
 	  public String getDate() {
-
-		    SimpleDateFormat sdfTime = new SimpleDateFormat("yyyy/MM/dd");
-		    String strTime = sdfTime.format(this.date);
-		    return strTime;
+		  SimpleDateFormat sdfTime = new SimpleDateFormat("yyyy/MM/dd");
+		  String strTime = sdfTime.format(this.date);
+		  return strTime;
 	  }
 	  
 	public void piocherCarte()
@@ -58,14 +57,14 @@ public abstract class Joueur  {
 	{
 		int res=0;
 		if(c1.getType()==TypeCarte.Canon && c2.getType()==TypeCarte.Canon && c3.getType()==TypeCarte.Canon)res=8;
-		else if(c1.getType()==TypeCarte.Soldat && c2.getType()==TypeCarte.Soldat && c3.getType()==TypeCarte.Soldat)res=3;
-		else if(c1.getType()==TypeCarte.Cavalier && c2.getType()==TypeCarte.Cavalier && c3.getType()==TypeCarte.Cavalier)res=5;
+		else if(c1.getType()==TypeCarte.Soldat && c2.getType()==TypeCarte.Soldat && c3.getType()==TypeCarte.Soldat) res=3;
+		else if(c1.getType()==TypeCarte.Cavalier && c2.getType()==TypeCarte.Cavalier && c3.getType()==TypeCarte.Cavalier) res=5;
 		else if((c1.getType()==TypeCarte.Soldat && c2.getType()==TypeCarte.Cavalier && c3.getType()==TypeCarte.Canon) ||
 				(c1.getType()==TypeCarte.Cavalier && c2.getType()==TypeCarte.Soldat && c3.getType()==TypeCarte.Canon) ||
 				(c1.getType()==TypeCarte.Canon && c2.getType()==TypeCarte.Cavalier && c3.getType()==TypeCarte.Soldat) ||
 				(c1.getType()==TypeCarte.Soldat && c2.getType()==TypeCarte.Canon && c3.getType()==TypeCarte.Cavalier) ||
 				(c1.getType()==TypeCarte.Cavalier && c2.getType()==TypeCarte.Canon && c3.getType()==TypeCarte.Soldat) ||
-				(c1.getType()==TypeCarte.Canon && c2.getType()==TypeCarte.Soldat && c3.getType()==TypeCarte.Cavalier))res=10;
+				(c1.getType()==TypeCarte.Canon && c2.getType()==TypeCarte.Soldat && c3.getType()==TypeCarte.Cavalier)) res=10;
 		return res;
 	}
 	
@@ -137,9 +136,9 @@ public abstract class Joueur  {
 	 * Ajoute le nombre d'unités grâce au bonus d'un continent.
 	 */
 	public void ajNbUniteContinent(){
-		for(int i =0; i<this.continent.size();i++){
+		for(int i =0; i<this.continent.size();i++)
 			this.ajouterArmeesDispo(this.continent.get(i).getBonusPion());
-		}
+
 		this.ajouterArmeesDispo(this.pays.size() /3);
 	}
 	
@@ -162,11 +161,9 @@ public abstract class Joueur  {
 		for(int i=0;i<5;i++){
 			Continent continent2p= this.plateau.getContinent(i);
 			ArrayList<Pays> paysContinent= continent2p.getlistPays();
-			for(Pays p:paysContinent){
-				if(p.isVoisin(pays) && !p.getOwner().equals(this.pseudo)){
+			for(Pays p:paysContinent)
+				if(p.isVoisin(pays) && !p.getOwner().equals(this.pseudo))
 					paysvoisinAtt.add(p);
-				}
-			}
 		}
 		return paysvoisinAtt;
 	}
@@ -181,8 +178,8 @@ public abstract class Joueur  {
 		Pays paysMax =pays2.get(0);
 		for(Pays p:pays2){
 			if(pMax<p.getNbArmees())
-				pMax=p.getNbArmees();
-				paysMax =p;
+				pMax = p.getNbArmees();
+			paysMax = p;
 		}
 		return paysMax;
 	}
@@ -213,17 +210,13 @@ public abstract class Joueur  {
 	public String idJoueur()
 	{
 		String res= "";
-		if(this.idJ < 10){
+		if(this.idJ < 10)
 			res = "J00" + "" + this.idJ;
-		}
-		else if(this.idJ<100){
+		else if(this.idJ<100)
 			res = "J0" + "" + this.idJ;
-		}
-		else{
+		else
 			res = "J" + "" + this.idJ;
-		}
 		return res;
-		
 	}
 	
 	/**
@@ -247,9 +240,8 @@ public abstract class Joueur  {
 	public int uniteTotal()
 	{
 		int unite = 0;
-		for (int i = 0; i< this.pays.size();i++){
+		for (int i = 0; i< this.pays.size();i++)
 			unite += this.pays.get(i).getNbArmees();
-		}
 		return unite;
 	}
 	
@@ -297,7 +289,6 @@ public abstract class Joueur  {
 		String[] participe = {id,idJoueur(),couleur,scoreJ};
 		Database dataParticiper = new Database(champs3, table3,participe,"");
 		dataParticiper.requeteInsert();
-	
 	}
 	
 	/**

@@ -8,6 +8,11 @@ public class Pays implements Comparable{
 	private Continent continent;
 	private Joueur owner;
 	
+	/**
+	 * Définition de la méthode compareTo, conséquence de l'implémentation de l'interface Comparable.
+	 * @param o l'objet à comparer. (Object)
+	 * @return le résultat de la comparaison. (int) 
+	 * */
 	public int compareTo(Object o)
 	{
 		Pays p = (Pays)o;
@@ -15,7 +20,7 @@ public class Pays implements Comparable{
 	}
 	
 	/**
-	 * Ajoute des armées
+	 * Ajoute des armées.
 	 * @param nbPions nombre de pions à ajouter au pays
 	 */
 	public void ajouterPions(int nbPions)
@@ -30,7 +35,7 @@ public class Pays implements Comparable{
 	public void enleverPions(int nbPions) throws RuntimeException
 	{
 		if(nbPions >= this.nbArmees)
-		throw new RuntimeException("requête impossible");
+			throw new RuntimeException("requête impossible");
 		this.nbArmees -= nbPions;
 	}
 	
@@ -51,7 +56,8 @@ public class Pays implements Comparable{
 	 */
 	public void deplacerPions(Pays p, int nbPions) throws RuntimeException
 	{
-		if(!this.isVoisin(p)) throw new RuntimeException("requête impossible");
+		if(!this.isVoisin(p)) 
+			throw new RuntimeException("requête impossible");
 		p.ajouterPions(nbPions);
 		this.enleverPions(nbPions);
 	}
