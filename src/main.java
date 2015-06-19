@@ -4,7 +4,7 @@ import java.sql.*;
   * */
 public class main {
  
-	public static void main(String[] argv) {
+	public static void main(String[] args) {
 
 	    /*String[] champs = {"id_joueur", "pseudo"};
 		String[] table = {"JOUEUR"};
